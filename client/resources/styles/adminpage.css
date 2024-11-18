@@ -1,0 +1,257 @@
+.header {
+	width: 1366px;
+	height: 141px;
+	padding: 8px 8px 8px 8px;
+	background: #003748;
+	border-color: #000000;
+	border-width: 1px;
+	border-style: solid;
+}
+.access-report-button {
+	width: 100px;
+	height: 50px;
+	padding: 0px 10px 0px 10px;
+	background: #D9534F;
+	color: #FFFFFF;
+	border-color: #D43F3A;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px 3px 3px 3px;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 14px;
+	text-align: center;
+}
+.bootstrap-red-button-pressed-5 {
+	width: 100px;
+	height: 50px;
+	padding: 0px 10px 0px 10px;
+	background: #D9534F;
+	color: #FFFFFF;
+	border-color: #D43F3A;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px 3px 3px 3px;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 14px;
+	text-align: center;
+}
+.edit-rewards-program {
+	width: 100px;
+	height: 50px;
+	padding: 0px 10px 0px 10px;
+	background: #D9534F;
+	color: #FFFFFF;
+	border-color: #D43F3A;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px 3px 3px 3px;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 14px;
+	text-align: center;
+}
+.manage-employees-button {
+	width: 100px;
+	height: 50px;
+	padding: 0px 10px 0px 10px;
+	background: #D9534F;
+	color: #FFFFFF;
+	border-color: #D43F3A;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px 3px 3px 3px;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 14px;
+	text-align: center;
+}
+.manage-inventory-button {
+	width: 100px;
+	height: 50px;
+	padding: 0px 10px 0px 10px;
+	background: #D9534F;
+	color: #FFFFFF;
+	border-color: #D43F3A;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px 3px 3px 3px;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 14px;
+	text-align: center;
+}
+logo{
+    width: 98px;
+    height: 98px;
+    background: #000000;
+  }
+.tuscaloosa-card-sharks {
+	width: 320px;
+	height: 67px;
+	/* box-shadow: 1px -5px 3px rgba(0, 0, 0, 0.29); */
+	color: #E61610;
+	font-family: "Calistoga";
+	font-weight: 400;
+	font-size: 48px;
+	text-align: left;
+}
+.welcome-message {
+	width: 293px;
+	height: 42px;
+	color: #000000;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 30px;
+	text-align: left;
+}
+.tuscaloosa-1 {
+	width: 304px;
+	height: 67px;
+	box-shadow: 1px -5px 3px rgba(0, 0, 0, 0.29);
+	color: #E61610;
+	font-family: "Calistoga";
+	font-weight: 400;
+	font-size: 48px;
+	text-align: left;
+}
+.rectangle-2 {
+	width: 157px;
+	height: 41px;
+	padding: 8px 8px 8px 8px;
+	background: #FFFFFF;
+	border-color: #CCCCCC;
+	border-width: 1px;
+	border-style: solid;
+}
+.rectangle-3 {
+	width: 157px;
+	height: 41px;
+	padding: 8px 8px 8px 8px;
+	background: #FFFFFF;
+	border-color: #CCCCCC;
+	border-width: 1px;
+	border-style: solid;
+}
+.rectangle-7 {
+	width: 157px;
+	height: 41px;
+	padding: 8px 8px 8px 8px;
+	background: #FFFFFF;
+	border-color: #CCCCCC;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 0px 0px 3px 3px;
+}
+.rectangle-4 {
+	width: 157px;
+	height: 41px;
+	padding: 8px 8px 8px 8px;
+	background: #E61610;
+	border-color: #428BCA;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px 3px 0px 0px;
+}
+.rectangle-5 {
+	width: 40px;
+	height: 43px;
+	padding: 8px 8px 8px 8px;
+	background: #E0E0E0;
+	border-color: #CCCCCC;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 0px 5px 5px 0px;
+}
+.plain-svg-1 {
+	width: 8px;
+	height: 4px;
+	background: #000000;
+}
+.sales {
+	width: 126px;
+	height: 25px;
+	color: #FFFFFF;
+	font-family: "Helvetica";
+	font-weight: 700;
+	font-size: 14px;
+	text-align: left;
+}
+.inventory {
+	width: 126px;
+	height: 25px;
+	color: #000000;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 14px;
+	text-align: left;
+}
+.seasonal {
+	width: 126px;
+	height: 25px;
+	color: #000000;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 14px;
+	text-align: left;
+}
+.sport {
+	width: 126px;
+	height: 25px;
+	color: #000000;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 14px;
+	text-align: left;
+}
+.bootstrap-red-button-pressed-1 {
+	width: 133px;
+	height: 61px;
+	padding: 0px 10px 0px 10px;
+	background: #E61610;
+	color: #FFFFFF;
+	border-color: #8A0602;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px 3px 3px 3px;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 14px;
+	text-align: center;
+}
+.signout {
+	width: 79px;
+	height: 36px;
+	padding: 0px 10px 0px 10px;
+	background: #D9534F;
+	color: #FFFFFF;
+	border-color: #D43F3A;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px 3px 3px 3px;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 14px;
+	text-align: center;
+}
+
+.rectangle-6 {
+	width: 118px;
+	height: 43px;
+	padding: 8px 8px 8px 8px;
+	background: #E0E0E0;
+	border-color: #CCCCCC;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px 0px 0px 5px;
+}
+.report {
+	width: 83px;
+	height: 25px;
+	color: #000000;
+	font-family: "Helvetica";
+	font-weight: 400;
+	font-size: 18px;
+	text-align: left;
+}

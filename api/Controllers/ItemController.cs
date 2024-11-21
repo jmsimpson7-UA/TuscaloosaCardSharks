@@ -1,7 +1,7 @@
 
 
 
-using api.Database;
+using api.Databases;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +15,7 @@ public class ItemController : ControllerBase
     [HttpGet]
     public async Task<List<Item>> GetRecipes()
     {
-        Databases myDatabase = new();
+        Database myDatabase = new();
         
         return await myDatabase.GetAllItems();
     }
@@ -23,7 +23,7 @@ public class ItemController : ControllerBase
     [HttpGet("{id}", Name="Get")]
     public async Task<List<Item>> GetItem(int id)
     {
-        Databases myDatabase = new();
+        Database myDatabase = new();
 
         return await myDatabase.GetItem(id);
     }
@@ -31,21 +31,21 @@ public class ItemController : ControllerBase
         [HttpPost]
         public async Task Post([FromBody]Item value)
         {
-            Databases myDatabase = new();
+            Database myDatabase = new();
             await myDatabase.InsertItem(value);
         }
 
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            Databases myDatabase = new();
+            Database myDatabase = new();
             await myDatabase.DeleteItem(id);
         }
 
         [HttpPut("{id}")]
         public async Task Put(int id, [FromBody]Item value)
         {
-            Databases myDatabase = new();
+            Database myDatabase = new();
             await myDatabase.UpdateItem(value, id);
         }
 }

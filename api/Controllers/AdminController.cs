@@ -1,5 +1,5 @@
 
-using api.database;
+using api.Database;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +13,7 @@ public class AdminController : ControllerBase
     [HttpGet]
     public async Task<List<Admin>> GetRecipes()
     {
-        Database myDatabase = new();
+        Databases myDatabase = new();
         
         return await myDatabase.GetAllAdmins();
     }
@@ -21,7 +21,7 @@ public class AdminController : ControllerBase
     [HttpGet("{id}", Name="Get")]
     public async Task<List<Admin>> GetAdmin(int id)
     {
-        Database myDatabase = new();
+        Databases myDatabase = new();
 
         return await myDatabase.GetAdmin(id);
     }
@@ -29,21 +29,21 @@ public class AdminController : ControllerBase
         [HttpPost]
         public async Task Post([FromBody]Admin value)
         {
-            Database myDatabase = new();
+            Databases myDatabase = new();
             await myDatabase.InsertAdmin(value);
         }
 
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            Database myDatabase = new();
+            Databases myDatabase = new();
             await myDatabase.DeleteAdmin(id);
         }
 
         [HttpPut("{id}")]
         public async Task Put(int id, [FromBody]Admin value)
         {
-            Database myDatabase = new();
+            Databases myDatabase = new();
             await myDatabase.UpdateAdmin(value, id);
         }
 }

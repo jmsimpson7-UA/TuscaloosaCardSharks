@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using api.Models;
 using MySqlConnector;
 
-namespace api.Database
+namespace api.Databases
 {
     public class Database
     {
@@ -100,8 +100,8 @@ namespace api.Database
         }
 
         public async Task InsertProduct(Item item){
-            string sql = @$"INSERT INTO product (productID, productName, price, status, team, category, sport, quantity, yearMade, size, nameOfPlayer)
-                            VALUES (@productID, @productName, @price, @status, @team, @category, @sport, @quantity, @yearMade, @size, @nameOfPlayer);";
+            string sql = @$"INSERT INTO product (productID, productName, price, status, team, category, sport, quantity, yearMade, purchaseID size, nameOfPlayer)
+                            VALUES (@productID, @productName, @price, @status, @team, @category, @sport, @quantity, @yearMade, @purchaseID, @size, @nameOfPlayer);";
             List<MySqlParameter> parms = new();
             parms.Add(new MySqlParameter("@productID", MySqlDbType.String) {Value = item.ID});
             parms.Add(new MySqlParameter("@productName", MySqlDbType.Date) {Value = item.Name});
@@ -112,11 +112,12 @@ namespace api.Database
             parms.Add(new MySqlParameter("@sport", MySqlDbType.Int32) {Value = item.Sport});
             parms.Add(new MySqlParameter("@quantity", MySqlDbType.Int32) {Value = item.quantity});
             parms.Add(new MySqlParameter("@yearMade", MySqlDbType.Int32) {Value = item.yearMade});
+            parms.Add(new MySqlParameter("@purchaseID", MySqlDbType.Int32) {Value = item.purchaseID});
             parms.Add(new MySqlParameter("@size", MySqlDbType.Int32) {Value = item.Size});
             parms.Add(new MySqlParameter("@nameOfPlayer", MySqlDbType.Int32) {Value = item.nameOfPlayer});
             await ItemNoReturnSql(sql, parms);
             
         }
-    
+    //season (Quarterly), sport, all inventory, rewards reports, purchase
     }
 }

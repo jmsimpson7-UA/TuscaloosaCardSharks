@@ -84,13 +84,17 @@ namespace api.Database
             return await SelectItem(sql, parms);
         }
 
-        public async Task InsertPurchase(Item item){
-            string sql = @$"INSERT INTO purchase (purchaseID, purchaseDate, pointsEarned)
-                            VALUES (@purchaseID, @purchaseDate, @pointsEarned);";
+        public async Task InsertPurchase(Item item, Customer customer, Purchase purchase){
+            string sql = @$"INSERT INTO purchase (purchaseID, purchaseDate, pointsEarned, custID)
+                            VALUES (@purchaseID, @purchaseDate, @pointsEarned, @custID);
+                            INSERT INTO productPurchased (purchaseID, productID)
+                            VALUES (@purchaseID, @productID);";
             List<MySqlParameter> parms = new();
-            parms.Add(new MySqlParameter("@purchaseID", MySqlDbType.String) {Value = item.ID});
+            parms.Add(new MySqlParameter("@purchaseID", MySqlDbType.String) {Value = purchase.purchaseID});
             parms.Add(new MySqlParameter("@purchaseDate", MySqlDbType.Date) {Value = DateTime.Now.ToString()});
             parms.Add(new MySqlParameter("@pointsEarned", MySqlDbType.Int32) {Value = Math.Round((item.price * 10), 0)});
+            parms.Add(new MySqlParameter("@custID", MySqlDbType.String) {Value = customer.custID});
+            parms.Add(new MySqlParameter("@productID", MySqlDbType.String) {Value = item.ID});
             await ItemNoReturnSql(sql, parms);
             
         }

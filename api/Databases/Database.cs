@@ -7,10 +7,10 @@ using MySqlConnector;
 
 namespace api.Databases
 {
-    public class Databases
+    public class Database
     {
         private string cs;
-        public Databases(){
+        public Database(){
             cs = "Server=ryvdxs57afyjk41z.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;User ID=qxd5a8g1n496kpfb;Password=awpw92wy7ya8yp15;Database=vgo20llik8rocjos;Port=3306";
         }
 

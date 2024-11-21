@@ -8,11 +8,14 @@ namespace api.Models
     public class Item
     {
         public int ID;
+        
+        public string Name;
+
         public string Team;
 
         public string Sport;
 
-        public bool Sold;
+        public string Status;
 
         public string Size;
 
@@ -25,5 +28,7 @@ namespace api.Models
         public string nameOfPlayer;
 
         public int purchaseID;
+        
+        public int quantity;
     }
 }

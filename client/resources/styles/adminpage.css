@@ -7,6 +7,12 @@
 	border-width: 1px;
 	border-style: solid;
 }
+.shark {
+    width: 98px;
+    height: 98px;
+    background: #000000;
+    
+  }
 .access-report-button {
 	width: 100px;
 	height: 50px;

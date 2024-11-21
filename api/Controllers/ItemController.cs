@@ -1,27 +1,4 @@
-// using Microsoft.AspNetCore.Mvc;
 
-// namespace api.Controllers;
-
-// [Route("[controller]")]
-// [ApiController]
-// public class ItemController : ControllerBase
-// {
-//     [HttpGet("{id}", Name ="Get")]
-//     public async Task<List<ItemController>> Get()
-//     {
-//         Database myDatabase = new();
-
-//         return await myDatabase.GetAllItems();
-//     }
-
-//     [HttpPost]
-//     public async void Post([FromBody] Item value)
-//     {
-//         System.Console.WriteLine(value.Name);
-//         Database myDatabase = new();
-//         await myDatabase.InsertItem(value);
-//     }
-// }
 
 
 using api.database;
@@ -72,3 +49,28 @@ public class ItemController : ControllerBase
             await myDatabase.UpdateItem(value, id);
         }
 }
+
+// using Microsoft.AspNetCore.Mvc;
+
+// namespace api.Controllers;
+
+// [Route("[controller]")]
+// [ApiController]
+// public class ItemController : ControllerBase
+// {
+//     [HttpGet("{id}", Name ="Get")]
+//     public async Task<List<ItemController>> Get()
+//     {
+//         Database myDatabase = new();
+
+//         return await myDatabase.GetAllItems();
+//     }
+
+//     [HttpPost]
+//     public async void Post([FromBody] Item value)
+//     {
+//         System.Console.WriteLine(value.Name);
+//         Database myDatabase = new();
+//         await myDatabase.InsertItem(value);
+//     }
+// }

@@ -8,8 +8,9 @@ namespace api.Models
     public class Purchase
     {
         public int purchaseID { get; set; }
-        public string date { get; set; }
+        public DateTime purchaseDate { get; set; }
         public int pointsEarned { get; set; }
+        public int price { get; set; }
         public int custID { get; set; }
     }
 }

@@ -1,40 +1,64 @@
-<html lang="en">  
- 
-<head>  
- 
-    <meta charset="UTF-8">  
- 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
- 
-    <link rel="stylesheet" href="./resources/styles/employeepage.css">  
+<!DOCTYPE html>
+<html lang="en">
 
-    <script src="./resources/scripts/index.js"></script>
- 
-    <title>Tuscaloosa Card Sharks</title>  
- 
-</head>  
- 
-<body onload="HandleOnLoad()">
-    <div id="app"></div>
- 
-    <div class="employee-activities">  
- 
-        <h1>Tuscaloosa Card Sharks</h1>  
- 
-        <button type="Manage Inventory" class="manage-inventory-button" onclick="window.location.href='./employeepage.html'">Manage Inventory</button>  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resources/styles/employeepage.css">
+    <title>Customer Management</title>
+</head>
 
-        <button type="Manage Employees" class="manage-employees-button" onclick="window.location.href='./employeepage.html'">Manage Employees</button> 
+<body>
+    <div class="header">
+        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
+        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
+        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
+    </div>
 
-        <button type="Edit Rewards Program" class="edit-rewards-program" onclick="window.location.href='./employeepage.html'">Edit Rewards Program</button> 
- 
-    </div>  
- 
-</div>  
- 
-</body>  
- 
-</html> 
- 
- 
- 
- 
+    <div class="customer-management-container">
+        <!-- Customer Lookup Section -->
+        <div class="lookup-container">
+            <h2 class="section-heading">Customer Lookup</h2>
+            <form class="search-form">
+                <input type="text" class="search-box" placeholder="Enter customer name or ID">
+                <button type="button" class="button-common search-button">Search</button>
+            </form>
+            <div class="search-results">
+                <p>No results to display.</p>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="divider">
+
+        <!-- Create New Customer Section -->
+        <div class="create-customer-container">
+            <h2 class="section-heading">Create New Customer</h2>
+            <form class="customer-form">
+                <div class="form-group">
+                    <label for="customer-name">Customer Name:</label>
+                    <input type="text" id="customer-name" class="input-box" placeholder="Enter customer name">
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-email">Email Address:</label>
+                    <input type="email" id="customer-email" class="input-box" placeholder="Enter customer email">
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-phone">Phone Number:</label>
+                    <input type="tel" id="customer-phone" class="input-box" placeholder="Enter phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-address">Address:</label>
+                    <textarea id="customer-address" class="input-box" placeholder="Enter customer address"></textarea>
+                </div>
+
+                <button type="submit" class="button-common create-button">Create Customer</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

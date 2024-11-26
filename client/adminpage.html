@@ -1,44 +1,35 @@
+<!DOCTYPE html>
 <html lang="en">  
- 
+
 <head>  
- 
     <meta charset="UTF-8">  
- 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
- 
     <link rel="stylesheet" href="./resources/styles/adminpage.css">  
- 
     <title>Tuscaloosa Card Sharks</title>  
- 
 </head>  
- 
+
 <body>  
     <div class="header">
         <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
         <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
-        <button type="Sign Out" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>   
+        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>   
     </div>
 
     <div class="employee-activities">  
- 
         <h1 class="welcome-message">Welcome Admin!</h1>   
- 
-        <button type="Manage Inventory" class="manage-inventory-button" onclick="window.location.href='./inventorymanager.html'">Manage Inventory</button>  
+        <button type="button" class="button-common" onclick="window.location.href='./employeepage.html'">Edit Rewards Program</button>
+        <button type="button" class="button-common" onclick="window.location.href='./inventorymanager.html'">Manage Inventory</button>  
+        <button type="button" class="button-common" onclick="window.location.href='./employeemanager.html'">Manage Employees</button>  
 
-        <button type="Manage Employees" class="manage-employees-button" onclick="window.location.href='./employeemanager.html'">Manage Employees</button> 
-
-        <button type="Edit Rewards Program" class="edit-rewards-program" onclick="window.location.href='./employeepage.html'">Edit Rewards Program</button> 
-
-        <button type="Access Reports" class="access-report-button" onclick="window.location.href='./rewardsprogrammanager.html'">Access Reports</button> 
- 
-    </div>  
- 
-</div>  
- 
+        <div class="dropdown">
+            <button class="button-common dropbtn">Access Reports</button>
+            <div class="dropdown-content">
+                <a href="./quarterlyreport.html">Quarterly Report</a>
+                <a href="./sportreport.html">By Sport</a>
+                <a href="./allinventoryreport.html">All Inventory</a>
+                <a href="./rewardsandpointsreport.html">Rewards and Points</a>
+            </div>
+        </div>
+    </div>
 </body>  
- 
-</html> 
- 
- 
- 
- 
+</html>

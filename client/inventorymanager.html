@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
+    <title>Inventory Management</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
+        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
+        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
+    </div>
+
+    <div class="inventory-management-container">
+        <!-- Inventory Search Section -->
+        <div class="inventory-search-container">
+            <h2 class="section-heading">Inventory Search</h2>
+            <form class="search-form">
+                <input type="text" class="search-box" placeholder="Search by item name or ID">
+                <button type="button" class="button-common search-button">Search</button>
+            </form>
+            <div class="search-results">
+                <!-- Placeholder for search results -->
+                <p>No items found. Use the form below to add new inventory.</p>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="divider">
+
+        <!-- Add New Inventory Section -->
+        <div class="add-inventory-container">
+            <h2 class="section-heading">Add New Inventory</h2>
+            <form class="inventory-form">
+                <div class="form-group">
+                    <label for="item-name">Item Name:</label>
+                    <input type="text" id="item-name" class="input-box" placeholder="Enter item name">
+                </div>
+
+                <div class="form-group">
+                    <label for="item-category">Category:</label>
+                    <select id="item-category" class="input-box">
+                        <option value="autographed">Autographed</option>
+                        <option value="equipment">Equipment</option>
+                        <option value="cards">Trading Cards</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-quantity">Quantity:</label>
+                    <input type="number" id="item-quantity" class="input-box" placeholder="Enter quantity" min="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="item-price">Price (USD):</label>
+                    <input type="number" id="item-price" class="input-box" placeholder="Enter price" step="0.01" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="item-description">Description:</label>
+                    <textarea id="item-description" class="input-box" placeholder="Enter a brief description"></textarea>
+                </div>
+
+                <button type="submit" class="button-common add-button">Add Item</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

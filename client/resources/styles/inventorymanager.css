@@ -39,8 +39,8 @@ body {
     cursor: pointer;
 }
 
-/* Customer Management Container */
-.customer-management-container {
+/* Inventory Management Container */
+.inventory-management-container {
     margin: 20px auto;
     padding: 20px;
     max-width: 800px;
@@ -57,10 +57,9 @@ body {
     margin-bottom: 20px;
 }
 
-/* Lookup Container */
-.lookup-container {
+/* Inventory Search Section */
+.inventory-search-container {
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .search-form {
@@ -107,12 +106,12 @@ body {
     margin: 20px 0;
 }
 
-/* Create Customer Container */
-.create-customer-container {
+/* Add Inventory Section */
+.add-inventory-container {
     text-align: center;
 }
 
-.customer-form {
+.inventory-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -143,8 +142,12 @@ textarea.input-box {
     height: 100px;
 }
 
-/* Create Button */
-.create-button {
+select.input-box {
+    cursor: pointer;
+}
+
+/* Add Button */
+.add-button {
     background: #D9534F;
     color: #FFFFFF;
     border: 1px solid #D43F3A;
@@ -154,6 +157,6 @@ textarea.input-box {
     cursor: pointer;
 }
 
-.create-button:hover {
+.add-button:hover {
     background-color: #bb4844;
 }

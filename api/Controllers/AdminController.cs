@@ -11,7 +11,7 @@ public class AdminController : ControllerBase
 {
     //GET: api/recipe
     [HttpGet]
-    public async Task<List<Admin>> GetRecipes()
+    public async Task<List<Employee>> GetAdmins()
     {
         Database myDatabase = new();
         
@@ -19,31 +19,31 @@ public class AdminController : ControllerBase
     }
 
     [HttpGet("{id}", Name="Get")]
-    public async Task<List<Admin>> GetAdmin(int id)
+    public async Task<List<Employee>> GetAdmin(int id)
     {
         Database myDatabase = new();
 
-        return await myDatabase.GetAdmin(id);
+        return await myDatabase.GetEmployee(id);
     }
 
         [HttpPost]
-        public async Task Post([FromBody]Admin value)
+        public async Task Post([FromBody]Employee value)
         {
             Database myDatabase = new();
-            await myDatabase.InsertAdmin(value);
+            await myDatabase.InsertEmployee(value);
         }
 
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
             Database myDatabase = new();
-            await myDatabase.DeleteAdmin(id);
+            await myDatabase.DeleteEmployee(id);
         }
 
         [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody]Admin value)
+        public async Task Put(int id, [FromBody]Employee value)
         {
             Database myDatabase = new();
-            await myDatabase.UpdateAdmin(value, id);
+            await myDatabase.UpdateEmployee(value, id);
         }
 }

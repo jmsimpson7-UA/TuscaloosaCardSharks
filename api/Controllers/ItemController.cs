@@ -13,7 +13,7 @@ public class ItemController : ControllerBase
 {
     //GET: api/recipe
     [HttpGet]
-    public async Task<List<Item>> GetRecipes()
+    public async Task<List<Item>> GetItemss()
     {
         Database myDatabase = new();
         

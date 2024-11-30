@@ -19,8 +19,6 @@ namespace api.Models
 
         public string Size;
 
-        public int yearMade;
-
         public double price;
 
         public string category;

@@ -15,6 +15,6 @@ namespace api.Models
 
         public int pointTotal;
 
-        public int email;
+        public string email;
     }
 }

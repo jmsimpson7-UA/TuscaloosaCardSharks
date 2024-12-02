@@ -18,7 +18,7 @@ public class AdminController : ControllerBase
         return await myDatabase.GetAllAdmins();
     }
 
-    [HttpGet("{id}", Name="Get")]
+    [HttpGet("{id}", Name="GetAdmin")]
     public async Task<List<Employee>> GetAdmin(int id)
     {
         Database myDatabase = new();

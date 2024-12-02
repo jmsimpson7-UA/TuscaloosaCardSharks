@@ -8,6 +8,7 @@ namespace api.Models
     public class Employee
     {
         public int empID { get; set; }
+        public string username { get; set; }
         public string fname { get; set; }
         public string lName { get; set; }
         public string password { get; set; }

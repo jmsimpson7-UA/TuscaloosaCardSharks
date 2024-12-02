@@ -20,7 +20,7 @@ public class ItemController : ControllerBase
         return await myDatabase.GetAllItems();
     }
 
-    [HttpGet("{id}", Name="Get")]
+    [HttpGet("{id}", Name="GetItem")]
     public async Task<List<Item>> GetItem(int id)
     {
         Database myDatabase = new();

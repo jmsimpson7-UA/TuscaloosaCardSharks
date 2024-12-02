@@ -32,15 +32,14 @@ namespace api.Databases
                 myItem.Add(new Item(){
                     ID = reader.GetInt32(0),
                     Name = reader.GetString(1),
-                    Team = reader.GetString(2),
-                    Sport = reader.GetString(3),
-                    Status = reader.GetString(4),
-                    Size = reader.GetString(5),
-                    price = reader.GetDouble(6),
-                    category = reader.GetString(7),
-                    nameOfPlayer = reader.GetString(8),
-                    purchaseID = reader.GetInt32(9),
-                    quantity = reader.GetInt32(10)
+                    price = reader.GetDouble(2),
+                    Status = reader.GetString(3),
+                    Team = reader.GetString(4),
+                    category = reader.GetString(5),
+                    Sport = reader.GetString(6),
+                    quantity = reader.GetInt32(7),
+                    Size = reader.GetString(8),
+                    nameOfPlayer = reader.GetString(9)
                 });
             }
 
@@ -63,10 +62,11 @@ namespace api.Databases
             {
                 myEmployee.Add(new Employee(){
                     empID = reader.GetInt32(0),
-                    fname = reader.GetString(1),
-                    lName = reader.GetString(2),
-                    password = reader.GetString(3),
-                    isAdmin = reader.GetBoolean(4),
+                    username = reader.GetString(1),
+                    fname = reader.GetString(2),
+                    lName = reader.GetString(3),
+                    password = reader.GetString(4),
+                    isAdmin = reader.GetBoolean(5),
                 });
             }
 
@@ -164,13 +164,14 @@ namespace api.Databases
         }
 
         public async Task InsertEmployee(Employee employee){
-            string sql = @$"INSERT INTO employee (empID, empFName, empLName, empPassword, isAdmin)
-                            VALUES (@empID, @fname, @lName, @password, @isAdmin);";
+            string sql = @$"INSERT INTO employee (empID, username, empFName, empLName, empPassword, isAdmin)
+                            VALUES (@empID, @username, @fname, @lName, @password, @isAdmin);";
             List<MySqlParameter> parms = new();
             parms.Add(new MySqlParameter("@empID", MySqlDbType.Int32) {Value = employee.empID});
+            parms.Add(new MySqlParameter("@username", MySqlDbType.String) {Value = employee.username});
             parms.Add(new MySqlParameter("@fname", MySqlDbType.String) {Value = employee.fname});
             parms.Add(new MySqlParameter("@lName", MySqlDbType.String) {Value = employee.lName});
-            parms.Add(new MySqlParameter("@password", MySqlDbType.Int32) {Value = employee.password});
+            parms.Add(new MySqlParameter("@password", MySqlDbType.String) {Value = employee.password});
             parms.Add(new MySqlParameter("@isAdmin", MySqlDbType.Int32) {Value = employee.isAdmin});
             await EmployeeNoReturnSql(sql, parms);
        }
@@ -183,19 +184,20 @@ namespace api.Databases
        }
 
        public async Task UpdateEmployee(Employee employee, int id){
-            string sql = @$"UPDATE employee SET empFName = @fname, empLName = @lName, empPassword = @password, isAdmin = @isAdmin
+            string sql = @$"UPDATE employee SET username = @username, empFName = @fname, empLName = @lName, empPassword = @password, isAdmin = @isAdmin
                         WHERE empID = @empID;";
             List<MySqlParameter> parms = new();
             parms.Add(new MySqlParameter("@empID", MySqlDbType.Int32) {Value = id});
+            parms.Add(new MySqlParameter("@username", MySqlDbType.String) {Value = employee.username});
             parms.Add(new MySqlParameter("@fname", MySqlDbType.String) {Value = employee.fname});
             parms.Add(new MySqlParameter("@lName", MySqlDbType.String) {Value = employee.lName});
-            parms.Add(new MySqlParameter("@password", MySqlDbType.Int32) {Value = employee.password});
+            parms.Add(new MySqlParameter("@password", MySqlDbType.String) {Value = employee.password});
             parms.Add(new MySqlParameter("@isAdmin", MySqlDbType.Int32) {Value = employee.isAdmin});
             await EmployeeNoReturnSql(sql, parms);
        }
 
        public async Task<List<Item>> GetAllItems(){
-            string sql = "SELECT * FROM product WHERE quantity > 0;";
+            string sql = "SELECT * FROM product WHERE quantity > 0 AND deleted = 'n';";
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
         }
@@ -211,16 +213,16 @@ namespace api.Databases
             string sql = @$"INSERT INTO product (productID, productName, price, status, team, category, sport, quantity, size, nameOfPlayer)
                             VALUES (@productID, @productName, @price, @status, @team, @category, @sport, @quantity, @size, @nameOfPlayer);";
             List<MySqlParameter> parms = new();
-            parms.Add(new MySqlParameter("@productID", MySqlDbType.String) {Value = item.ID});
-            parms.Add(new MySqlParameter("@productName", MySqlDbType.Date) {Value = item.Name});
-            parms.Add(new MySqlParameter("@price", MySqlDbType.Int32) {Value = item.price});
-            parms.Add(new MySqlParameter("@status", MySqlDbType.Int32) {Value = item.Status});
-            parms.Add(new MySqlParameter("@team", MySqlDbType.Int32) {Value = item.Team});
-            parms.Add(new MySqlParameter("@category", MySqlDbType.Int32) {Value = item.category});
-            parms.Add(new MySqlParameter("@sport", MySqlDbType.Int32) {Value = item.Sport});
+            parms.Add(new MySqlParameter("@productID", MySqlDbType.Int32) {Value = item.ID});
+            parms.Add(new MySqlParameter("@productName", MySqlDbType.String) {Value = item.Name});
+            parms.Add(new MySqlParameter("@price", MySqlDbType.Double) {Value = item.price});
+            parms.Add(new MySqlParameter("@status", MySqlDbType.String) {Value = item.Status});
+            parms.Add(new MySqlParameter("@team", MySqlDbType.String) {Value = item.Team});
+            parms.Add(new MySqlParameter("@category", MySqlDbType.String) {Value = item.category});
+            parms.Add(new MySqlParameter("@sport", MySqlDbType.String) {Value = item.Sport});
             parms.Add(new MySqlParameter("@quantity", MySqlDbType.Int32) {Value = item.quantity});
-            parms.Add(new MySqlParameter("@size", MySqlDbType.Int32) {Value = item.Size});
-            parms.Add(new MySqlParameter("@nameOfPlayer", MySqlDbType.Int32) {Value = item.nameOfPlayer});
+            parms.Add(new MySqlParameter("@size", MySqlDbType.String) {Value = item.Size});
+            parms.Add(new MySqlParameter("@nameOfPlayer", MySqlDbType.String) {Value = item.nameOfPlayer});
             await ItemNoReturnSql(sql, parms);
         }
 
@@ -234,9 +236,9 @@ namespace api.Databases
         public async Task UpdateItem(Item item, int id){
             string sql = @$"UPDATE product SET productName = @productName, price = @price, status = @status, team = @team, 
             category = @category, sport = @sport, quantity = @quantity, size = @size, nameOfPlayer = @playerName
-                        WHERE empID = @empID;";
+                        WHERE productID = @productID;";
             List<MySqlParameter> parms = new();
-            parms.Add(new MySqlParameter("@empID", MySqlDbType.Int32) {Value = id});
+            parms.Add(new MySqlParameter("@productID", MySqlDbType.Int32) {Value = id});
             parms.Add(new MySqlParameter("@productName", MySqlDbType.String) {Value = item.Name});
             parms.Add(new MySqlParameter("@price", MySqlDbType.Double) {Value = item.price});
             parms.Add(new MySqlParameter("@status", MySqlDbType.String) {Value = item.Status});
@@ -301,7 +303,7 @@ namespace api.Databases
 
         //WHAT DO WE WANT FOR THE REWARD REPORT??
         public async Task<List<Customer>> RewardsReport(){
-            string sql = @"SELECT custID, custFName, PointTotal FROM customer;";
+            string sql = @"SELECT custID, concat(custFName, custLName) as FullName, custEmail, PointTotal FROM customer;";
 
             List<MySqlParameter> parms = new();
             return await SelectCustomer(sql, parms);

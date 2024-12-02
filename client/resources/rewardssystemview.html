@@ -1,0 +1,70 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards System View</title>
+    <link rel="stylesheet"  -->
+
+    <!DOCTYPE html>
+<html lang="en">  
+
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="./styles/rewardssystemview.css">
+</head>
+<body>
+    <div class="header">
+        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
+        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
+        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>   
+    </div>
+    <div class="container">
+        <h1>Rewards Program</h1>
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="searchBar" 
+                placeholder="Search by Name or Member ID..."
+            />
+            <button onclick="filterTable()">Search</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Member ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Points Accumulated</th>
+                </tr>
+            </thead>
+            <tbody id="rewardsTableBody">
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>john.doe@example.com</td>
+                    <td>(123) 456-7890</td>
+                    <td>1500</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>jane.smith@example.com</td>
+                    <td>(234) 567-8901</td>
+                    <td>1200</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Robert Johnson</td>
+                    <td>robert.johnson@example.com</td>
+                    <td>(345) 678-9012</td>
+                    <td>1800</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="./scripts/rewardssystemview.js"></script>
+</body>
+</html>

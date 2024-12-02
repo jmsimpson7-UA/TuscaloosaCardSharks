@@ -150,6 +150,19 @@ namespace api.Databases
             await command.ExecuteNonQueryAsync();
         }
 
+        private async Task PurchaseNoReturnSql(string sql, List<MySqlParameter> parms){
+            List<Purchase> myItem = new();
+            using var connection = new MySqlConnection(cs);
+            await connection.OpenAsync();
+            using var command = new MySqlCommand(sql, connection);
+
+            if(parms != null){
+                command.Parameters.AddRange(parms.ToArray());
+            }
+
+            await command.ExecuteNonQueryAsync();
+        }
+
         public async Task<List<Employee>> GetAllAdmins(){
             string sql = $"SELECT * FROM employee WHERE isAdmin = 1 AND deleted = 'n';";
             List<MySqlParameter> parms = new();
@@ -197,7 +210,7 @@ namespace api.Databases
        }
 
        public async Task<List<Item>> GetAllItems(){
-            string sql = "SELECT * FROM product WHERE quantity > 0;";
+            string sql = "SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ') FROM product WHERE quantity > 0 AND deleted = 'n';";
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
         }
@@ -250,6 +263,18 @@ namespace api.Databases
             parms.Add(new MySqlParameter("@playerName", MySqlDbType.String) {Value = item.nameOfPlayer});
             await ItemNoReturnSql(sql, parms);
         }
+        
+        public async Task InsertPurchase(Purchase purchase){
+            string sql = @$"INSERT INTO purchase (purchaseID, purchaseDate, pointsEarned, custID) 
+                            VALUES (@purchaseID, @purchaseDate, @pointsEarned, @custID);";
+            List<MySqlParameter> parms = new();
+            parms.Add(new MySqlParameter("@purchaseID", MySqlDbType.Int32) {Value = purchase.purchaseID});
+            parms.Add(new MySqlParameter("@purchaseDate", MySqlDbType.Date) {Value = purchase.purchaseDate.ToString("yyyy-mm-dd")});
+            parms.Add(new MySqlParameter("@pointsEarned", MySqlDbType.Int32) {Value = purchase.pointsEarned});
+            parms.Add(new MySqlParameter("@custID", MySqlDbType.Int32) {Value = purchase.custID});
+            await PurchaseNoReturnSql(sql, parms);
+        }
+
     //season (Quarterly), sport, all inventory, rewards reports, purchase
         public async Task<List<Purchase>> QuarterlyReport(){
             string sql = @"SELECT YEAR(purchaseDate) as Years, QUARTER(purchaseDate) Quarters, pointsEarned, custID
@@ -303,7 +328,7 @@ namespace api.Databases
 
         //WHAT DO WE WANT FOR THE REWARD REPORT??
         public async Task<List<Customer>> RewardsReport(){
-            string sql = @"SELECT custID, custFName, PointTotal FROM customer;";
+            string sql = @"SELECT custID, concat(custFName, custLName) as FullName, custEmail, PointTotal FROM customer;";
 
             List<MySqlParameter> parms = new();
             return await SelectCustomer(sql, parms);

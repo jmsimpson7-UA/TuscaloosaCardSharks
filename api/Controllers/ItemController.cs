@@ -1,7 +1,4 @@
-
-
-
-using api.database;
+using api.Databases;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,14 +10,14 @@ public class ItemController : ControllerBase
 {
     //GET: api/recipe
     [HttpGet]
-    public async Task<List<Item>> GetRecipes()
+    public async Task<List<Item>> GetItemss()
     {
         Database myDatabase = new();
         
         return await myDatabase.GetAllItems();
     }
 
-    [HttpGet("{id}", Name="Get")]
+    [HttpGet("{id}", Name="GetItem")]
     public async Task<List<Item>> GetItem(int id)
     {
         Database myDatabase = new();

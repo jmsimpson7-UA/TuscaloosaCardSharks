@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
+    <title>Inventory Management</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
+        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
+        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
+    </div>
+
+    <div class="inventory-management-container">
+        <!-- Inventory Search Section -->
+        <div class="inventory-search-container">
+            <h2 class="section-heading">Customer Search</h2>
+            <form class="search-form">
+                <input type="text" class="search-box" placeholder="Search by Customer Name">
+                <button type="button" class="button-common search-button">Search</button>
+            </form>
+            <div class="search-results">
+                <!-- Placeholder for search results -->
+                <p>No items found. Use the form below to add new inventory.</p>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="divider">
+
+        <!-- Add New Inventory Section -->
+        <div class="add-inventory-container">
+            <h2 class="section-heading">Add New Customer</h2>
+            <form class="inventory-form">
+                <div class="form-group">
+                    <label for="item-name">Customer Name:</label>
+                    <input type="text" id="item-name" class="input-box" placeholder="Enter customer name">
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-">Enter Customer Email:</label>
+                    <input type="number" id="item-price" class="input-box" placeholder="Enter Customer Email">
+                </div>
+
+                <div class="customer-point-total">
+                    <label for="item-description">Customer Point Total:</label>
+                    <input type="number" id="item-price" class="input-box" placeholder="Enter Customer Point Total" step="0.01" min="0">
+                </div>
+
+                <button type="submit" class="button-common add-button">Add Customer</button>
+            </form>
+        </div>
+
+        <!-- Divider -->
+        <hr class="divider">
+
+        <!-- Inventory Table Section -->
+        <div class="inventory table">
+            <h2 class="section-heading">Current Customers</h2>
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Email</th>
+                        <th>Pont Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bob Smith</td>
+                        <td>bobsmith@gmail.com</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Jeff Lucas</td>
+                        <td>jlucas@ua.edu</td>
+                        <td>10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

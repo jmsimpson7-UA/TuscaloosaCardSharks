@@ -160,3 +160,33 @@ select.input-box {
 .add-button:hover {
     background-color: #bb4844;
 }
+
+/* Table Styles */
+.inventory-table-container {
+    text-align: center;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.inventory-table th, .inventory-table td {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.inventory-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.inventory-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.inventory-table tr:hover {
+    background-color: #f1f1f1;
+}

@@ -197,7 +197,7 @@ namespace api.Databases
        }
 
        public async Task<List<Item>> GetAllItems(){
-            string sql = "SELECT * FROM product WHERE quantity > 0;";
+            string sql = "SELECT * FROM product WHERE quantity > 0 AND deleted = 'n';";
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
         }
@@ -303,7 +303,7 @@ namespace api.Databases
 
         //WHAT DO WE WANT FOR THE REWARD REPORT??
         public async Task<List<Customer>> RewardsReport(){
-            string sql = @"SELECT custID, custFName, PointTotal FROM customer;";
+            string sql = @"SELECT custID, concat(custFName, custLName) as FullName, custEmail, PointTotal FROM customer;";
 
             List<MySqlParameter> parms = new();
             return await SelectCustomer(sql, parms);

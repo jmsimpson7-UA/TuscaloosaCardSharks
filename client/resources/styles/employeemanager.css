@@ -1,0 +1,24 @@
+.employee table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.employee table th, .inventory-table td {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.employee table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.employee table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.employee table tr:hover {
+    background-color: #f1f1f1;
+}

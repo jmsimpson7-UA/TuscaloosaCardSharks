@@ -24,9 +24,6 @@ namespace api.Models
         public string category;
 
         public string nameOfPlayer;
-
-        public int purchaseID;
-        
         public int quantity;
     }
 }

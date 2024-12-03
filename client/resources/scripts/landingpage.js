@@ -1,15 +1,16 @@
 async function validate(event, loginForm) {
-   
     event.preventDefault();
+
     const username = loginForm.username.value;
-    const password = loginform.password.value;
-    if(!username || !password){
-        alert("Please fill in both fields");
+    const password = loginForm.password.value;
+
+    if (!username || !password) {
+        alert("Please fill in both fields.");
         return;
     }
+
     try {
-        // Make an API call to your backend for authentication
-        const response = await fetch('http://localhost:5195/admin', {
+        const response = await fetch('http://localhost:5195/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,6 +23,7 @@ async function validate(event, loginForm) {
         }
 
         const user = await response.json();
+
         if (user.isAdmin) {
             window.location.href = "adminpage.html";
         } else {
@@ -31,6 +33,7 @@ async function validate(event, loginForm) {
         alert("Invalid username or password. Please try again.");
         console.error(error);
     }
+}
 
     // var booValid = true;
     // var strErrorMessage = "";
@@ -47,4 +50,4 @@ async function validate(event, loginForm) {
     // } else {
     //     window.location.href = "adminpage.html"; 
     //}
-}
+//}

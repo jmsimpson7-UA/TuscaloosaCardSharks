@@ -144,6 +144,13 @@ namespace api.Databases
 
             return myCustomer;
         }
+        
+        public async Task<List<Customer>> GetAllCustomers()
+        {
+            string sql = "SELECT * FROM customer WHERE deleted = 'n';";
+            List<MySqlParameter> parms = new();
+            return await SelectCustomer(sql, parms);
+        }
 
         private async Task ItemNoReturnSql(string sql, List<MySqlParameter> parms)
         {

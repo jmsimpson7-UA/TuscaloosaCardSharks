@@ -10,7 +10,7 @@ async function validate(event, loginForm) {
     }
 
     try {
-        const response = await fetch('http://localhost:5195/admin', {
+        const response = await fetch('http://localhost:5195/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

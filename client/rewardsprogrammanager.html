@@ -1,53 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> 
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
-    <title>Rewards Program Manager</title>
-</head>
+<html lang="en"> 
 
-<body>
-    <div class="header">
-        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
-        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
-        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
-    </div>
+ 
 
-    <div class="inventory-management-container">
+<head> 
 
-        <!-- Divider -->
-        <hr class="divider">
+    <meta charset="UTF-8"> 
 
-        <!-- Divider -->
-        <hr class="divider">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-        <div class="inventory table">
-            <h2 class="section-heading">Current Customers</h2>
-            <table class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Customer Name</th>
-                        <th>Email</th>
-                        <th>Pont Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Bob Smith</td>
-                        <td>bobsmith@gmail.com</td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <td>Jeff Lucas</td>
-                        <td>jlucas@ua.edu</td>
-                        <td>10</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</body>
+    <link rel="stylesheet" href="./resources/styles/rewardseditor.css"> 
 
-</html>
+    <title>Rewards Program Manager</title> 
+
+</head> 
+
+ 
+
+<body> 
+
+    <div class="header"> 
+
+        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1> 
+
+        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark"> 
+
+        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button> 
+
+    </div> 
+
+ 
+
+    <main> 
+
+        <div class="container"> 
+
+            <h2>Edit Rewards Program</h2> 
+
+            <p>Current Points Per Dollar: <span id="current-points">1</span></p> 
+
+            <label for="points-input">Set Points Per Dollar:</label> 
+
+            <input type="number" id="points-input" min="1" max="10" value="1"> 
+
+            <button id="save-button">Save Changes</button> 
+
+            <p id="success-message" class="hidden">Changes saved successfully!</p> 
+
+        </div> 
+
+    </main> 
+
+ 
+
+</body> 
+
+<script src="./resources/scripts/rewardseditor.js"></script> 
+
+</html> 

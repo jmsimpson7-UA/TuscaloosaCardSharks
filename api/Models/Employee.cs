@@ -17,5 +17,25 @@ namespace api.Models
         public void processPurchase(){
             
         }
+
+        public void ViewInventory(){
+
+        }
+
+        public void EditInventory(string category, string input){
+
+        }
+
+        public void RemoveInventory(){
+
+        }
+
+        public void DeleteCustAccount(){
+
+        }
+
+        public void DeleteEmpAccount(){
+
+        }
     }
 }

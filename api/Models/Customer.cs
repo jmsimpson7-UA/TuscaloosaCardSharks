@@ -7,14 +7,14 @@ namespace api.Models
 {
     public class Customer
     {
-        public int custID;
+        public int custID { get; set; }
 
-        public string fName;
+        public string fName { get; set; }
 
-        public string lName;
+        public string lName { get; set; }
 
-        public int pointTotal;
+        public int pointTotal { get; set; }
 
-        public string email;
+        public string email { get; set; }
     }
 }

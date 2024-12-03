@@ -7,23 +7,23 @@ namespace api.Models
 {
     public class Item
     {
-        public int ID;
+        public int ID { get; set; }
         
-        public string Name;
+        public string Name { get; set; }
 
-        public string Team;
+        public string Team { get; set; }
 
-        public string Sport;
+        public string Sport { get; set; }
 
-        public string Status;
+        public string Status { get; set; }
 
-        public string Size;
+        public string Size { get; set; }
 
-        public double price;
+        public double price { get; set; }
 
-        public string category;
+        public string category { get; set; }
 
-        public string nameOfPlayer;
-        public int quantity;
+        public string nameOfPlayer { get; set; }
+        public int quantity { get; set; }
     }
 }

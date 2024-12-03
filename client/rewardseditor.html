@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards Program Editor</title>
+    <link rel="stylesheet" href="./resources/styles/rewardseditor.css">
+</head>
+
+        <div class="header">
+            <img src="./resources/styles/download.png" class="shark" alt="Shark Logo">
+            <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
+            <button class="sign-out">Sign Out</button>
+        </div>
+
+    <main>
+        <div class="container">
+            <h2>Edit Rewards Program</h2>
+            <p>Current Points Per Dollar: <span id="current-points">1</span></p>
+            <label for="points-input">Set Points Per Dollar:</label>
+            <input type="number" id="points-input" min="1" max="10" value="1">
+            <button id="save-button">Save Changes</button>
+            <p id="success-message" class="hidden">Changes saved successfully!</p>
+        </div>
+    </main>
+</body>
+<script src="./resources/scripts/rewardseditor.js"></script>
+</html>

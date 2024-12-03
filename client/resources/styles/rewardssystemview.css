@@ -1,4 +1,4 @@
-/* 
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -104,21 +104,21 @@ th {
 
 tr:hover {
     background-color: #f1f1f1;
-} */
+}
 
 
 
 
 /* General Styles */
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
-}
+} */
 
 /* Header Styles */
-.header {
+/* .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -151,10 +151,10 @@ body {
 
 .signout:hover {
     background: #B52E2A;
-}
+} */
 
 /* Main Content Styles */
-.container {
+/* .container {
     max-width: 600px;
     margin: 40px auto;
     background-color: #fff;
@@ -211,4 +211,4 @@ button:hover {
     color: green;
     margin-top: 20px;
     font-size: 16px;
-}
+} */

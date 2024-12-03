@@ -2,12 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using api.Databases;
+using api.Models;
+using MySqlConnector;
 
 namespace api.Controllers
 {
     public class ReportController
     {
-        public async Task<List<Purchase>> getRewardsReport(){
+        public async Task<List<Customer>> getRewardsReport(){
 
             Database myDatabase = new();
 
@@ -46,7 +50,7 @@ namespace api.Controllers
 
             Database myDatabase = new();
 
-            return await myDatabase.Q4PurchaseReport;            
+            return await myDatabase.Q4PurchaseReport();            
         }
 
         public async Task<List<Purchase>> getAllSalesReport(){

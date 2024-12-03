@@ -240,9 +240,10 @@ namespace api.Databases
             await EmployeeNoReturnSql(sql, parms);
         }
 
-        public async Task<List<Item>> GetAllItems()
+        public async Task<List<Item>> GetAllItems() 
         {
-            string sql = "SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ') FROM product WHERE quantity > 0 AND deleted = 'n';";
+            string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
+                            FROM product WHERE quantity > 0 AND deleted = 'n';";
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
         }

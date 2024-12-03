@@ -1,27 +1,22 @@
-<!-- <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rewards System View</title>
-    <link rel="stylesheet"  -->
-
-    <!DOCTYPE html>
-<html lang="en">  
-
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <link rel="stylesheet" href="./styles/rewardssystemview.css">
+    <link rel="stylesheet" href="./resources/styles/rewardssystemview.css">
+    <link rel="stylesheet" href="./resources/styles/adminpage.css"> <!-- Link to the shared CSS -->
 </head>
 <body>
+
     <div class="header">
+        <img src="./resources/styles/download.png" class="shark" alt="Shark Logo">
         <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
-        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
-        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>   
+        <button class="sign-out">Sign Out</button>
     </div>
+
     <div class="container">
-        <h1>Rewards Program</h1>
         <div class="search-container">
             <input 
                 type="text" 
@@ -32,6 +27,7 @@
         </div>
         <table>
             <thead>
+                
                 <tr>
                     <th>Member ID</th>
                     <th>Name</th>
@@ -65,6 +61,6 @@
             </tbody>
         </table>
     </div>
-    <script src="./scripts/rewardssystemview.js"></script>
+    <script src="./resources/scripts/rewardssystemview.js"></script>
 </body>
 </html>

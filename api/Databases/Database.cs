@@ -371,6 +371,31 @@ namespace api.Databases
             return await SelectPurchase(sql, parms);
         }
 
+        public async Task<List<Purchase>> Q1PurchaseReport(){
+            string sql = @"SELECT * FROM purchase WHERE YEAR(purchaseDate) = YEAR(curdate()) AND MONTH(purchaseDate) IN (1, 2, 3);";
+
+            List<MySqlParameter> parms = new();
+            return await SelectPurchase(sql, parms);
+        }
+        public async Task<List<Purchase>> Q2PurchaseReport(){
+            string sql = @"SELECT * FROM purchase WHERE YEAR(purchaseDate) = YEAR(curdate()) AND MONTH(purchaseDate) IN (4, 5, 6);";
+
+            List<MySqlParameter> parms = new();
+            return await SelectPurchase(sql, parms);
+        }
+        public async Task<List<Purchase>> Q3PurchaseReport(){
+            string sql = @"SELECT * FROM purchase WHERE YEAR(purchaseDate) = YEAR(curdate()) AND MONTH(purchaseDate) IN (7, 8, 9);";
+
+            List<MySqlParameter> parms = new();
+            return await SelectPurchase(sql, parms);
+        }
+        public async Task<List<Purchase>> Q4PurchaseReport(){
+            string sql = @"SELECT * FROM purchase WHERE YEAR(purchaseDate) = YEAR(curdate()) AND MONTH(purchaseDate) IN (10, 11, 12);";
+
+            List<MySqlParameter> parms = new();
+            return await SelectPurchase(sql, parms);
+        }
+
         //WHAT DO WE WANT FOR THE REWARD REPORT??
         public async Task<List<Customer>> RewardsReport()
         {

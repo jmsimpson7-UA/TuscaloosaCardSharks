@@ -24,7 +24,7 @@ async function getAllCustomers(){
 }
 
 async function buildInventoryTable() {
-    let html = `
+    let html = `<h2 class="section-heading">Current Inventory</h2>
     <table class="inventory-table">
         <thead>
             <tr>
@@ -34,6 +34,48 @@ async function buildInventoryTable() {
                 <th>Quantity</th>
                 <th>Price (USD)</th>
            </tr>
-        </thead>`;
+        </thead>
+        <tbody>`;
+    
+    myInventory.forEach((item) => {
+        html += `
+        <tr>
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.category}</td>
+            <td>${item.quantity}</td>
+            <td>${item.price}</td>
+        </tr>`
+    });
+
+    html += `</table>`;
+
+    document.getElementById("inventory").innerHTML = html;
 }
 
+async function buildCustomersTable(){
+    let html = `<h2 class="section-heading">Current Customers</h2>
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                    <th>Pont Total</th>
+                </tr>
+            </thead>
+            <tbody>`;
+    myCustomers.forEach((customer) => {
+        html += `
+        <tr>
+            <td>{customer.id}</td>
+            <td>{customer.name}</td>
+            <td>{customer.email}</td>
+            <td>{customer.points}</td>
+        </tr>`
+    });
+
+    html += `</table>`;
+
+    document.getElementById("customers").innerHTML = html;
+}

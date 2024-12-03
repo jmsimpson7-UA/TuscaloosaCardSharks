@@ -11,7 +11,7 @@ public class LoginController : ControllerBase
     public async Task<IActionResult> Authenticate([FromBody] LoginRequest loginRequest)
     {
         Database myDatabase = new();
-        string sql = "SELECT * FROM employee WHERE username = @username AND empPassword = @password;";
+        string sql = "SELECT * FROM employee WHERE username = @username AND empPassword = @password AND deleted = 'n';";
         
         List<MySqlParameter> parms = new()
         {

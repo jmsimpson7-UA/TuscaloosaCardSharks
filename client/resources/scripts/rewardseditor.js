@@ -21,4 +21,5 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Please enter a valid number between 1 and 10.");
         }
     });
+    
 });

@@ -13,11 +13,18 @@ public class EmployeeController : ControllerBase
     public async Task<List<Employee>> GetAdmins()
     {
         Database myDatabase = new();
-        
+
         return await myDatabase.GetAllAdmins();
     }
 
-    [HttpGet("{id}", Name="GetAdmin")]
+    [HttpGet("all")]
+    public async Task<List<Employee>> GetAllEmployees()
+    {
+        Database myDatabase = new();
+        return await myDatabase.GetAllEmployees();
+    }
+
+    [HttpGet("{id}", Name = "GetEmployee")]
     public async Task<List<Employee>> GetAdmin(int id)
     {
         Database myDatabase = new();
@@ -25,24 +32,24 @@ public class EmployeeController : ControllerBase
         return await myDatabase.GetEmployee(id);
     }
 
-        [HttpPost]
-        public async Task Post([FromBody]Employee value)
-        {
-            Database myDatabase = new();
-            await myDatabase.InsertEmployee(value);
-        }
+    [HttpPost]
+    public async Task Post([FromBody] Employee value)
+    {
+        Database myDatabase = new();
+        await myDatabase.InsertEmployee(value);
+    }
 
-        [HttpDelete("{id}")]
-        public async Task Delete(int id)
-        {
-            Database myDatabase = new();
-            await myDatabase.DeleteEmployee(id);
-        }
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        Database myDatabase = new();
+        await myDatabase.DeleteEmployee(id);
+    }
 
-        [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody]Employee value)
-        {
-            Database myDatabase = new();
-            await myDatabase.UpdateEmployee(value, id);
-        }
+    [HttpPut("{id}")]
+    public async Task Put(int id, [FromBody] Employee value)
+    {
+        Database myDatabase = new();
+        await myDatabase.UpdateEmployee(value, id);
+    }
 }

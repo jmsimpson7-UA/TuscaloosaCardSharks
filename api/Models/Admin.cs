@@ -14,7 +14,7 @@ namespace api.Models
 
         public string lName;
 
-        public void ViewIntevnotry(){
+        public void ViewInventory(){
 
         }
 

@@ -24,7 +24,7 @@ public class EmployeeController : ControllerBase
         return await myDatabase.GetAllEmployees();
     }
 
-    [HttpGet("{id}", Name = "GetEmployee")]
+    [HttpGet("{id}", Name = "GetAdmin")]
     public async Task<List<Employee>> GetAdmin(int id)
     {
         Database myDatabase = new();

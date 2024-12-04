@@ -1,4 +1,4 @@
-/* 
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -104,23 +104,8 @@ th {
 
 tr:hover {
     background-color: #f1f1f1;
-} */
-
-
-
-
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
 }
 
-<<<<<<< HEAD
-/* Header Styles */
-.header {
-=======
 
 
 
@@ -134,7 +119,6 @@ body {
 
 /* Header Styles */
 /* .header {
->>>>>>> efb43f58395fe88f0c2cfca0ff31e9461273fc39
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -167,17 +151,10 @@ body {
 
 .signout:hover {
     background: #B52E2A;
-<<<<<<< HEAD
 }
 
 /* Main Content Styles */
-.container {
-=======
-} */
-
-/* Main Content Styles */
 /* .container {
->>>>>>> efb43f58395fe88f0c2cfca0ff31e9461273fc39
     max-width: 600px;
     margin: 40px auto;
     background-color: #fff;
@@ -234,8 +211,4 @@ button:hover {
     color: green;
     margin-top: 20px;
     font-size: 16px;
-<<<<<<< HEAD
-}
-=======
-} */
->>>>>>> efb43f58395fe88f0c2cfca0ff31e9461273fc39
+}  */

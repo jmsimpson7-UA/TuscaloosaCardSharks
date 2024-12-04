@@ -137,8 +137,9 @@ namespace api.Databases
                     custID = reader.GetInt32(0),
                     fName = reader.GetString(1),
                     lName = reader.GetString(2),
-                    pointTotal = reader.GetInt32(3),
-                    email = reader.GetString(4),
+                    email = reader.GetString(3),
+                    pointTotal = reader.GetInt32(4),
+                    deleted = reader.GetString(5)
                 });
             }
 
@@ -147,7 +148,7 @@ namespace api.Databases
         
         public async Task<List<Customer>> GetAllCustomers()
         {
-            string sql = "SELECT * FROM customer WHERE deleted = 'n';";
+            string sql = "SELECT * FROM customer WHERE deleted = 'n' ORDER BY pointTotal DESC;";
             List<MySqlParameter> parms = new();
             return await SelectCustomer(sql, parms);
         }
@@ -284,6 +285,14 @@ namespace api.Databases
         }
 
         public async Task<List<Item>> GetAllItems() 
+        {
+            string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
+                            FROM product WHERE deleted = 'n';";
+            List<MySqlParameter> parms = new();
+            return await SelectItem(sql, parms);
+        }
+
+          public async Task<List<Item>> GetAllPurchasableItems() 
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
                             FROM product WHERE quantity > 0 AND deleted = 'n';";

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
-    <title>Quarterly Report</title>
+    <title>Current Inventory</title>
 </head>
- 
+
 <body onload = "handleOnLoad()">
     <div class="header">
         <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
@@ -15,15 +15,20 @@
         <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
         <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
     </div>
- 
+
     <div class="inventory-management-container">
- 
-        <div class="inventory table"></div>
-            <h2 class="section-heading">Quarter 1 Report</h2>
+
+        <hr class="divider">
+
+        <hr class="divider">
+
+        <div class="inventory table" >
+            <h2 class="section-heading">Current Inventory</h2>
             <table class="inventory-table" id = "app">
             </table>
         </div>
     </div>
+    <script src ="./resources/scripts/inventoryview.js"></script>
 </body>
-<script src="./resources/scripts/quarter1report.js"></script>
+
 </html>

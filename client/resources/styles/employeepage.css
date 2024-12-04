@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,7 +6,6 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Header Section */
 .header {
     display: flex;
     align-items: center;
@@ -28,7 +27,6 @@ body {
     margin: 0;
 }
 
-/* Sign Out Button */
 .signout {
     background: #D9534F;
     color: #FFFFFF;
@@ -39,7 +37,6 @@ body {
     cursor: pointer;
 }
 
-/* Employee Management Container */
 .employee-management-container {
     margin: 20px auto;
     padding: 20px;
@@ -50,14 +47,14 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Section Headings */
+
 .section-heading {
     font-size: 24px;
     color: #000000;
     margin-bottom: 20px;
 }
 
-/* Employee Search Section */
+
 .employee-search-container {
     text-align: center;
 }
@@ -91,7 +88,6 @@ body {
     background-color: #bb4844;
 }
 
-/* Divider */
 .divider {
     border: 0;
     height: 1px;
@@ -99,7 +95,7 @@ body {
     margin: 20px 0;
 }
 
-/* Add Employee Section */
+
 .add-employee-container {
     text-align: center;
 }
@@ -135,7 +131,7 @@ textarea.input-box {
     height: 100px;
 }
 
-/* Add Button */
+
 .add-button {
     background: #D9534F;
     color: #FFFFFF;
@@ -150,7 +146,7 @@ textarea.input-box {
     background-color: #bb4844;
 }
 
-/* Employee Table Styles */
+
 .employee-table-container {
     text-align: center;
 }

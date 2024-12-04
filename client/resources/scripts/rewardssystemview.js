@@ -1,7 +1,3 @@
-
-document.addEventListener("DOMContentLoaded", handleOnLoad);
-
-
 function filterTable() {
     const searchValue = document.getElementById('searchBar').value.toLowerCase();
 

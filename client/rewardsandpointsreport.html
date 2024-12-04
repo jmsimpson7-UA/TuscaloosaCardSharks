@@ -8,7 +8,7 @@
     <title>Rewards Report</title>
 </head>
 
-<body>
+<body onload = "handleOnLoad()">
     <div class="header">
         <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
         <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
@@ -24,31 +24,13 @@
         <!-- Divider -->
         <hr class="divider">
 
-        <div class="inventory table">
+        <div class="inventory table" >
             <h2 class="section-heading">Points Report</h2>
-            <table class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Purchase Date</th>
-                        <th>Purchase ID</th>
-                        <th>Point Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
+            <table class="inventory-table" id = "app">
             </table>
         </div>
     </div>
+    <script src ="./resources/scripts/rewardReport.js"></script>
 </body>
 
 </html>

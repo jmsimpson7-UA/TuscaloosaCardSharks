@@ -9,55 +9,71 @@ using MySqlConnector;
 
 namespace api.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ReportController
     {
-        public async Task<List<Customer>> getRewardsReport(){
+        [HttpGet("RewardsReport")]
+        public async Task<List<Customer>> getRewardsReport()
+        {
 
             Database myDatabase = new();
 
-            return await myDatabase.RewardsReport();            
+            return await myDatabase.RewardsReport();
         }
 
-        public async Task<List<Purchase>> getSportsReport(){
+        [HttpGet("SportsReport")]
+        public async Task<List<Purchase>> getSportsReport()
+        {
 
             Database myDatabase = new();
 
-            return await myDatabase.QuarterlyReport();            
+            return await myDatabase.QuarterlyReport();
         }
 
-        public async Task<List<Purchase>> getFirstQuarterReport(){
+        [HttpGet("FirstQuarterReport")]
+        public async Task<List<Purchase>> getFirstQuarterReport()
+        {
 
             Database myDatabase = new();
 
-            return await myDatabase.Q1PurchaseReport();            
+            return await myDatabase.Q1PurchaseReport();
         }
 
-        public async Task<List<Purchase>> getSecondQuarterReport(){
+        [HttpGet("SecondQuarterReport")]
+        public async Task<List<Purchase>> getSecondQuarterReport()
+        {
 
             Database myDatabase = new();
 
-            return await myDatabase.Q2PurchaseReport();            
+            return await myDatabase.Q2PurchaseReport();
         }
 
-        public async Task<List<Purchase>> getThirdQuarterReport(){
+        [HttpGet("ThirdQuarterReport")]
+        public async Task<List<Purchase>> getThirdQuarterReport()
+        {
 
             Database myDatabase = new();
 
-            return await myDatabase.Q3PurchaseReport();            
+            return await myDatabase.Q3PurchaseReport();
         }
 
-        public async Task<List<Purchase>> getFourthQuarterReport(){
+        [HttpGet("FourthQuarterReport")]
+        public async Task<List<Purchase>> getFourthQuarterReport()
+        {
 
             Database myDatabase = new();
 
-            return await myDatabase.Q4PurchaseReport();            
+            return await myDatabase.Q4PurchaseReport();
         }
 
-        public async Task<List<Purchase>> getAllSalesReport(){
+        [HttpGet("SalesReport")]
+        public async Task<List<Purchase>> getAllSalesReport()
+        {
 
             Database myDatabase = new();
 
-            return await myDatabase.QuarterlyReport();            
+            return await myDatabase.QuarterlyReport();
         }
     }
 }

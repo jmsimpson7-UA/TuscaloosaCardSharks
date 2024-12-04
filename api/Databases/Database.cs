@@ -429,7 +429,8 @@ namespace api.Databases
 
         public async Task<List<Item>> BaseballReport()
         {
-            string sql = @"SELECT * FROM product WHERE sport = 'Baseball';";
+            string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
+                            FROM product WHERE sport = 'Baseball';";
 
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
@@ -437,7 +438,8 @@ namespace api.Databases
 
         public async Task<List<Item>> FootballReport()
         {
-            string sql = @"SELECT * FROM product WHERE sport = 'Football';";
+            string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
+                            FROM product WHERE sport = 'Football';";
 
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
@@ -445,7 +447,26 @@ namespace api.Databases
 
         public async Task<List<Item>> BasketballReport()
         {
-            string sql = @"SELECT * FROM product WHERE sport = 'Basketball';";
+            string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
+                            FROM product WHERE sport = 'Basketball';";
+
+            List<MySqlParameter> parms = new();
+            return await SelectItem(sql, parms);
+        }
+
+        public async Task<List<Item>> HockeyReport()
+        {
+            string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
+                            FROM product WHERE sport = 'Hockey';";
+
+            List<MySqlParameter> parms = new();
+            return await SelectItem(sql, parms);
+        }
+
+        public async Task<List<Item>> SoccerReport()
+        {
+            string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
+                            FROM product WHERE sport = 'Soccer';";
 
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);

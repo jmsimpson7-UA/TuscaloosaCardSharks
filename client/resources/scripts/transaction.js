@@ -4,12 +4,10 @@ const url = "http://localhost:5195/item/purchasable"
 const curl = "http://localhost:5195/customer"
 
 async function HandleOnLoad(){
-    // await getAllInventory();
-    // buildInventoryTable();
-    // await getAllCustomers();
-    // buildCustomersTable();
-
-    updatePoints(4, 50);
+    await getAllInventory();
+    buildInventoryTable();
+    await getAllCustomers();
+    buildCustomersTable();
 }
 
 async function getAllInventory(){
@@ -86,6 +84,7 @@ async function handleTransaction(event) {
     event.preventDefault();
     
     try {
+        let itemInput = document.getElementById("item-name");
         let priceInput = document.getElementById("item-price");
         let customerInput = document.getElementById("customer-name");
 
@@ -94,7 +93,8 @@ async function handleTransaction(event) {
         }
 
         let price = parseInt(priceInput.value);
-        let customerId = parseInt(customerInput.value);
+        var customerId = parseInt(customerInput.value);
+        console.log(customerId);
 
         let newTransaction = {
             purchaseDate: new Date().toISOString().split("T")[0],
@@ -120,45 +120,7 @@ async function handleTransaction(event) {
         alert(error.message);
     }
 
-    updatePoints(customerInput, priceInput);
     
 }
 
-async function updatePoints(customerId, price){
-    let points = price * 10;
-    try{
-        let response = await fetch(`http://localhost:5195/customer/${customerId}`);
 
-            if (!response.ok) {
-                throw new Error("Customer not found.");
-            }
-
-            let customer = await response.json();
-
-            let updatedCustomer = {
-                custID: customer.custID,
-                fName: customer.fName,
-                lName: customer.lName,
-                pointTotal: customer.pointTotal + points,
-                email: customer.email,
-                deleted: customer.deleted
-            }
-
-            let updateResponse = await fetch(`http://localhost:5195/customer/${customerId}`, {
-                method: "PUT",
-                body: JSON.stringify(updatedCustomer),
-                headers: {
-                    "Content-Type": "application/json; charset=UTF-8"
-                }
-            });
-
-            if (updateResponse.ok) {
-                alert("Customer points updated successfully.");
-            } else {
-                throw new Error("Failed to update points.");
-            }
-    } catch (error) {
-        console.error("Error updating points:", error);
-        alert("Error updating points: " + error.message);
-    }
-}

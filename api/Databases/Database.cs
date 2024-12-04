@@ -101,7 +101,7 @@ namespace api.Databases
                     purchaseID = reader.GetInt32(0),
                     purchaseDate = reader.GetDateOnly(1),
                     pointsEarned = reader.GetInt32(2),
-                    // price = (reader.GetInt32(2) / 10),
+                    price = (reader.GetInt32(2) / 10),
                     custID = reader.GetInt32(3)
                 });
             }

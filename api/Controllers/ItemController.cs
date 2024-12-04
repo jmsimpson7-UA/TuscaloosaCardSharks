@@ -20,11 +20,6 @@ public class ItemController : ControllerBase
         return await myDatabase.GetAllItems();
     }
 
-    public async Task <List<Item>> GetPurchasableItems(){
-        Database myDatabase = new();
-        return await myDatabase.GetAllPurchasableItems();
-    }
-
     [HttpGet("{id}", Name="GetItem")]
     public async Task<List<Item>> GetItem(int id)
     {
@@ -54,3 +49,28 @@ public class ItemController : ControllerBase
             await myDatabase.UpdateItem(value, id);
         }
 }
+
+// using Microsoft.AspNetCore.Mvc;
+
+// namespace api.Controllers;
+
+// [Route("[controller]")]
+// [ApiController]
+// public class ItemController : ControllerBase
+// {
+//     [HttpGet("{id}", Name ="Get")]
+//     public async Task<List<ItemController>> Get()
+//     {
+//         Database myDatabase = new();
+
+//         return await myDatabase.GetAllItems();
+//     }
+
+//     [HttpPost]
+//     public async void Post([FromBody] Item value)
+//     {
+//         System.Console.WriteLine(value.Name);
+//         Database myDatabase = new();
+//         await myDatabase.InsertItem(value);
+//     }
+// }.

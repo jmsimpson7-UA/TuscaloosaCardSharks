@@ -3,10 +3,10 @@ let myCustomers = []
 const url = "http://localhost:5195/item"
 const curl = "http://localhost:5195/customer"
 
-async function handleOnLoad(){
-    getAllInventory();
+async function HandleOnLoad(){
+    await getAllInventory();
     buildInventoryTable();
-    getAllCustomers();
+    await getAllCustomers();
     buildCustomersTable();
 }
 
@@ -19,7 +19,7 @@ async function getAllInventory(){
 async function getAllCustomers(){
     let response = await fetch(curl)
     if(response.status == 200){
-        myInventory = await response.json()
+        myCustomers = await response.json()
     }
 }
 
@@ -64,7 +64,7 @@ async function buildCustomersTable(){
                     <th>Pont Total</th>
                 </tr>
             </thead>
-            <tbody>`;
+            </tbody>`;
     myCustomers.forEach((customer) => {
         html += `
         <tr>
@@ -75,7 +75,7 @@ async function buildCustomersTable(){
         </tr>`
     });
 
-    html += `</table>`;
+    html += `</table> </tbody>`;
 
     document.getElementById("customers").innerHTML = html;
 }

@@ -25,6 +25,12 @@ public class ItemController : ControllerBase
         return await myDatabase.GetAllPurchasableItems();
     }
 
+    [HttpGet ("soldOut")]
+    public async Task <List<Item>> GetSoldOutItems(){
+        Database myDatabase = new();
+        return await myDatabase.GetSoldOutItems();
+    }
+
     [HttpGet ("nonPurchasable")]
     public async Task<List<Item>> GetNonPurchasableItems(){
         Database myDatabase = new();

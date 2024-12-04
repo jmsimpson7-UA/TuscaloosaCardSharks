@@ -123,6 +123,13 @@ namespace api.Databases
             List<MySqlParameter> parms = new();
             return await SelectEmployee(sql, parms);
         }
+
+        public async Task<List<Employee>> GetOnlyEmployees()
+        {
+            string sql = "SELECT * FROM employee WHERE isAdmin = '0' AND deleted = 'n';";
+            List<MySqlParameter> parms = new();
+            return await SelectEmployee(sql, parms);
+        }
         public async Task<List<Customer>> SelectCustomer(string sql, List<MySqlParameter> parms)
         {
 
@@ -295,6 +302,14 @@ namespace api.Databases
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
                             FROM product WHERE deleted = 'n';";
+            List<MySqlParameter> parms = new();
+            return await SelectItem(sql, parms);
+        }
+
+        public async Task<List<Item>> GetSoldOutItems() 
+        {
+            string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
+                            FROM product WHERE quantity = 0 AND deleted = 'n';";
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
         }

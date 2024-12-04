@@ -8,10 +8,11 @@
     <title>Employee Manager</title>
 </head>
 
-<body>
+<body onload = "handleOnLoad()">
     <div class="header">
         <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
         <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
+        <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
         <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
     </div>
 
@@ -25,24 +26,10 @@
 
         <div class="inventory table">
             <h2 class="section-heading">Current Employees</h2>
-            <table class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Employee ID</th>
-                        <th>Employee Name</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        
-                    </tr>
-                    <tr>
-                        
-                    </tr>
-                </tbody>
+            <table class="inventory-table" id = "employee">
+                
             </table>
+            <script src ="./resources/scripts/em.js"></script>
         </div>
     </div>
 </body>

@@ -116,6 +116,13 @@ namespace api.Databases
             List<MySqlParameter> parms = new();
             return await SelectEmployee(sql, parms);
         }
+
+        public async Task<List<Employee>> GetOnlyEmployees()
+        {
+            string sql = "SELECT * FROM employee WHERE isAdmin = '0' AND deleted = 'n';";
+            List<MySqlParameter> parms = new();
+            return await SelectEmployee(sql, parms);
+        }
         public async Task<List<Customer>> SelectCustomer(string sql, List<MySqlParameter> parms)
         {
 

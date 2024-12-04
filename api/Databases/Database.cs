@@ -152,6 +152,42 @@ namespace api.Databases
             return await SelectCustomer(sql, parms);
         }
 
+        public async Task DeleteCustomer(int id)
+        {
+            string sql = $"UPDATE customer SET deleted = 'y' WHERE id = @id;";
+            List<MySqlParameter> parms = new();
+            parms.Add(new MySqlParameter("@id", MySqlDbType.Int32) { Value = id });
+            await CustomerNoReturnSql(sql, parms);
+        }
+
+        private async Task CustomerNoReturnSql(string sql, List<MySqlParameter> parms)
+        {
+            List<Customer> mycustomer = new();
+            using var connection = new MySqlConnection(cs);
+            await connection.OpenAsync();
+            using var command = new MySqlCommand(sql, connection);
+
+            if (parms != null)
+            {
+                command.Parameters.AddRange(parms.ToArray());
+            }
+
+            await command.ExecuteNonQueryAsync();
+        }
+
+        public async Task InsertCustomer(Customer customer)
+        {
+            string sql = @$"INSERT INTO customer (custID, custFName, custLName, custEmail, PointTotal)
+                            VALUES (@custID, @custFName, @custLName, @custEmail, @PointTotal);";
+            List<MySqlParameter> parms = new();
+            parms.Add(new MySqlParameter("@empID", MySqlDbType.Int32) { Value = customer.custID });
+            parms.Add(new MySqlParameter("@custFName", MySqlDbType.String) { Value = customer.fName });
+            parms.Add(new MySqlParameter("@custLName", MySqlDbType.String) { Value = customer.lName });
+            parms.Add(new MySqlParameter("@custEmail", MySqlDbType.String) { Value = customer.email });
+            parms.Add(new MySqlParameter("@PointTotal", MySqlDbType.String) { Value = customer.pointTotal });
+            await EmployeeNoReturnSql(sql, parms);
+        }
+
         private async Task ItemNoReturnSql(string sql, List<MySqlParameter> parms)
         {
             List<Item> myItem = new();
@@ -288,6 +324,7 @@ namespace api.Databases
             parms.Add(new MySqlParameter("@id", MySqlDbType.Int32) { Value = id });
             await ItemNoReturnSql(sql, parms);
         }
+        
 
         public async Task UpdateItem(Item item, int id)
         {

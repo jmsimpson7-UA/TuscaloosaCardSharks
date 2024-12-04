@@ -68,10 +68,10 @@ async function buildCustomersTable(){
     myCustomers.forEach((customer) => {
         html += `
         <tr>
-            <td>{customer.id}</td>
-            <td>{customer.name}</td>
-            <td>{customer.email}</td>
-            <td>{customer.points}</td>
+            <td>${customer.id}</td>
+            <td>${customer.name}</td>
+            <td>${customer.email}</td>
+            <td>${customer.points}</td>
         </tr>`
     });
 

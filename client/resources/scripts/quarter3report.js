@@ -1,17 +1,17 @@
-let myQ1Purchases = [];
-const url = "http://localhost:5195/api/report/firstquarterreport";
+let myQ3Purchases = [];
+const url = "http://localhost:5195/api/report/thirdquarterreport";
 
 async function handleOnLoad() {
-    await getFirstQuarterReport()
+    await getThirdQuarterReport()
     buildTable()
 }
 
-async function getFirstQuarterReport() {
+async function getThirdQuarterReport() {
     let response = await fetch(url);
     if (response.status === 200) {
-        myQ1Purchases = await response.json();
+        myQ3Purchases = await response.json();
     }
-    console.log(myQ1Purchases);
+    console.log(myQ3Purchases);
 }
 async function buildTable(){
     let html = `<table>
@@ -20,7 +20,7 @@ async function buildTable(){
     <th>Purchase ID</th>
     <th>Point Total</th>
   </tr>`
-  myQ1Purchases.forEach((purchase) =>{
+  myQ3Purchases.forEach((purchase) =>{
       html +=`<tr>
       <td>${purchase.purchaseDate}</td>
       <td>${purchase.purchaseID}</td>

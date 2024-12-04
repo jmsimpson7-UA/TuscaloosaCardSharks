@@ -37,6 +37,31 @@ public class TransactionController : ControllerBase
         }
     }
 
+    [HttpGet ("productPurchase")]
+    public async Task<List<ProductPurchase>> GetProductPurchases(){
+        Database myDatabase = new();
 
+        return await myDatabase.GetAllProductPurchases();
+    }
+
+[HttpPost ()]
+    public async Task<IActionResult> PostProductPurchase([FromBody] ProductPurchase value)
+    {
+        if (value == null)
+        {
+            return BadRequest("Invalid purchase data.");
+        }
+        
+        try
+        {
+            Database myDatabase = new();
+            await myDatabase.InsertProductPurchase(value);
+            return Ok("Transaction inserted successfully.");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
     
 }

@@ -1,17 +1,17 @@
-let myQ1Purchases = [];
-const url = "http://localhost:5195/api/report/firstquarterreport";
+let myQ2Purchases = [];
+const url = "http://localhost:5195/api/report/secondquarterreport";
 
 async function handleOnLoad() {
-    await getFirstQuarterReport()
+    await getSecondQuarterReport()
     buildTable()
 }
 
-async function getFirstQuarterReport() {
+async function getSecondQuarterReport() {
     let response = await fetch(url);
     if (response.status === 200) {
         myQ1Purchases = await response.json();
     }
-    console.log(myQ1Purchases);
+    console.log(myQ2Purchases);
 }
 async function buildTable(){
     let html = `<table>

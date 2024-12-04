@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,7 +6,6 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Header Section */
 .header {
     display: flex;
     align-items: center;
@@ -28,7 +27,6 @@ body {
     margin: 0;
 }
 
-/* Sign Out Button */
 .signout {
     background: #D9534F;
     color: #FFFFFF;
@@ -39,8 +37,7 @@ body {
     cursor: pointer;
 }
 
-/* Customer Management Container */
-.customer-management-container {
+.employee-management-container {
     margin: 20px auto;
     padding: 20px;
     max-width: 800px;
@@ -50,17 +47,16 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Section Headings */
+
 .section-heading {
     font-size: 24px;
     color: #000000;
     margin-bottom: 20px;
 }
 
-/* Lookup Container */
-.lookup-container {
+
+.employee-search-container {
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .search-form {
@@ -92,14 +88,6 @@ body {
     background-color: #bb4844;
 }
 
-.search-results {
-    text-align: left;
-    color: #333333;
-    margin-top: 20px;
-    font-size: 16px;
-}
-
-/* Divider */
 .divider {
     border: 0;
     height: 1px;
@@ -107,12 +95,12 @@ body {
     margin: 20px 0;
 }
 
-/* Create Customer Container */
-.create-customer-container {
+
+.add-employee-container {
     text-align: center;
 }
 
-.customer-form {
+.employee-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -143,8 +131,8 @@ textarea.input-box {
     height: 100px;
 }
 
-/* Create Button */
-.create-button {
+
+.add-button {
     background: #D9534F;
     color: #FFFFFF;
     border: 1px solid #D43F3A;
@@ -154,6 +142,37 @@ textarea.input-box {
     cursor: pointer;
 }
 
-.create-button:hover {
+.add-button:hover {
     background-color: #bb4844;
 }
+
+
+.employee-table-container {
+    text-align: center;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.employee-table th, .employee-table td {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.employee-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.employee-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.employee-table tr:hover {
+    background-color: #f1f1f1;
+}
+

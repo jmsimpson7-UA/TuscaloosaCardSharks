@@ -23,34 +23,35 @@ async function getAllCustomers(){
     }
 }
 
-async function buildInventoryTable() {
-    let html = `<h2 class="section-heading">Current Inventory</h2>
-    <table class="inventory-table">
-        <thead>
-            <tr>
-                <th>Item ID</th>
-                <th>Item Name</th>
-                <th>Category</th>
-                <th>Quantity</th>
-                <th>Price (USD)</th>
-           </tr>
-        </thead>
-        <tbody>`;
-    
-    myInventory.forEach((item) => {
-        html += `
-        <tr>
-            <td>${item.id}</td>
-            <td>${item.name}</td>
-            <td>${item.category}</td>
-            <td>${item.quantity}</td>
-            <td>${item.price}</td>
-        </tr>`
-    });
-
-    html += `</table>`;
-
-    document.getElementById("inventory").innerHTML = html;
+async function buildInventoryTable(){
+    let html = `<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Team</th>
+    <th>Sport</th>
+    <th>Status</th>
+    <th>Size</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Name of Player</th>
+    <th>Quantity</th>
+  </tr>`
+  myInventory.forEach((inventory) =>{
+      html +=`<tr>
+      <td>${inventory.id}</td>
+      <td>${inventory.name}</td>
+      <td>${inventory.team}</td>
+      <td>${inventory.sport}</td>
+      <td> ${inventory.status}</td>
+      <td>${inventory.size}</td>
+      <td>${inventory.price}</td>
+      <td>${inventory.category}</td>
+      <td>${inventory.nameOfPlayer}</td>
+      <td> ${inventory.quantity}</td>
+    </tr>`
+    })
+document.getElementById("inventory").innerHTML = html
 }
 
 async function buildCustomersTable(){

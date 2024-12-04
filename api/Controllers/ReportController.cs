@@ -13,15 +13,6 @@ namespace api.Controllers
     [ApiController]
     public class ReportController
     {
-        [HttpGet("RewardsReport")]
-        public async Task<List<Customer>> getRewardsReport()
-        {
-
-            Database myDatabase = new();
-
-            return await myDatabase.RewardsReport();
-        }
-
         [HttpGet("SportsReport")]
         public async Task<List<Purchase>> getSportsReport()
         {

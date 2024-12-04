@@ -19,6 +19,18 @@ public class ItemController : ControllerBase
         
         return await myDatabase.GetAllItems();
     }
+    [HttpGet ("purchasable")]
+    public async Task <List<Item>> GetPurchasableItems(){
+        Database myDatabase = new();
+        return await myDatabase.GetAllPurchasableItems();
+    }
+
+    [HttpGet ("nonPurchasable")]
+    public async Task<List<Item>> GetNonPurchasableItems(){
+        Database myDatabase = new();
+        return await myDatabase.GetNonPurchasableItems();
+    }
+
 
     [HttpGet("{id}", Name="GetItem")]
     public async Task<List<Item>> GetItem(int id)

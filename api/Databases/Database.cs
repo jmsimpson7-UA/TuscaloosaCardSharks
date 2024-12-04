@@ -300,6 +300,14 @@ namespace api.Databases
             return await SelectItem(sql, parms);
         }
 
+        public async Task<List<Item>> GetNonPurchasableItems() 
+        {
+            string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
+                            FROM product WHERE deleted = 'y';";
+            List<MySqlParameter> parms = new();
+            return await SelectItem(sql, parms);
+        }
+
         public async Task<List<Item>> GetItem(int id)
         {
             string sql = $"SELECT * FROM product WHERE productID = @id;";

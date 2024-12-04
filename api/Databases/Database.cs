@@ -101,7 +101,7 @@ namespace api.Databases
                     purchaseID = reader.GetInt32(0),
                     purchaseDate = reader.GetDateOnly(1),
                     pointsEarned = reader.GetInt32(2),
-                    // price = (reader.GetInt32(2) / 10),
+                    price = (reader.GetInt32(2) / 10),
                     custID = reader.GetInt32(3)
                 });
             }
@@ -109,13 +109,69 @@ namespace api.Databases
             return myPurchase;
         }
 
-        public async Task<List<Purchase>> GetAllPurchases() 
+        public async Task<List<ProductPurchase>> SelectProductPurchase(string sql, List<MySqlParameter> parms)
+        {
+            List<ProductPurchase> myProductPurchase = new();
+            using var connection = new MySqlConnection(cs);
+            await connection.OpenAsync();
+            using var command = new MySqlCommand(sql, connection);
+            if (parms != null)
+            {
+                command.Parameters.AddRange(parms.ToArray());
+            }
+
+            using var reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                myProductPurchase.Add(new ProductPurchase()
+                {
+                    purchaseID = reader.GetInt32(0),
+                    productID = reader.GetInt32(1)
+                });
+            }
+
+            return myProductPurchase;
+
+        }
+
+        public async Task<List<Purchase>> GetAllPurchases()
         {
             string sql = @"SELECT * FROM purchase;";
             List<MySqlParameter> parms = new();
             return await SelectPurchase(sql, parms);
         }
 
+        public async Task<List<ProductPurchase>> GetAllProductPurchases()
+        {
+            string sql = @"SELECT * FROM productPurchased;";
+            List<MySqlParameter> parms = new();
+            return await SelectProductPurchase(sql, parms);
+        }
+
+        private async Task ProductPurchaseNoReturnSql(string sql, List<MySqlParameter> parms)
+        {
+            List<ProductPurchase> myItem = new();
+            using var connection = new MySqlConnection(cs);
+            await connection.OpenAsync();
+            using var command = new MySqlCommand(sql, connection);
+
+            if (parms != null)
+            {
+                command.Parameters.AddRange(parms.ToArray());
+            }
+
+            await command.ExecuteNonQueryAsync();
+        }
+
+        public async Task InsertProductPurchase(ProductPurchase productPurchase)
+        {
+            string sql = @$"INSERT INTO productPurchase (purchaseID, productID)
+                            VALUES (@purchaseID, @productID);";
+            List<MySqlParameter> parms = new();
+            parms.Add(new MySqlParameter("@purchaseID", MySqlDbType.Int32) { Value = productPurchase.purchaseID });
+            parms.Add(new MySqlParameter("@productID", MySqlDbType.String) { Value = productPurchase.productID });
+            await ProductPurchaseNoReturnSql(sql, parms);
+        }
 
         public async Task<List<Employee>> GetAllEmployees()
         {
@@ -159,7 +215,7 @@ namespace api.Databases
 
             return myCustomer;
         }
-        
+
         public async Task<List<Customer>> GetAllCustomers()
         {
             string sql = "SELECT * FROM customer WHERE deleted = 'n' ORDER BY pointTotal DESC;";
@@ -217,7 +273,7 @@ namespace api.Databases
             string sql = @$"INSERT INTO customer (custID, custFName, custLName, custEmail, PointTotal)
                             VALUES (@custID, @custFName, @custLName, @custEmail, @PointTotal);";
             List<MySqlParameter> parms = new();
-            parms.Add(new MySqlParameter("@empID", MySqlDbType.Int32) { Value = customer.custID });
+            parms.Add(new MySqlParameter("custID", MySqlDbType.Int32) { Value = customer.custID });
             parms.Add(new MySqlParameter("@custFName", MySqlDbType.String) { Value = customer.fName });
             parms.Add(new MySqlParameter("@custLName", MySqlDbType.String) { Value = customer.lName });
             parms.Add(new MySqlParameter("@custEmail", MySqlDbType.String) { Value = customer.email });
@@ -320,7 +376,7 @@ namespace api.Databases
             await EmployeeNoReturnSql(sql, parms);
         }
 
-        public async Task<List<Item>> GetAllItems() 
+        public async Task<List<Item>> GetAllItems()
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
                             FROM product WHERE deleted = 'n';";
@@ -328,7 +384,7 @@ namespace api.Databases
             return await SelectItem(sql, parms);
         }
 
-        public async Task<List<Item>> GetSoldOutItems() 
+        public async Task<List<Item>> GetSoldOutItems()
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
                             FROM product WHERE quantity = 0 AND deleted = 'n';";
@@ -336,7 +392,7 @@ namespace api.Databases
             return await SelectItem(sql, parms);
         }
 
-          public async Task<List<Item>> GetAllPurchasableItems() 
+        public async Task<List<Item>> GetAllPurchasableItems()
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
                             FROM product WHERE quantity > 0 AND deleted = 'n';";
@@ -344,7 +400,7 @@ namespace api.Databases
             return await SelectItem(sql, parms);
         }
 
-        public async Task<List<Item>> GetNonPurchasableItems() 
+        public async Task<List<Item>> GetNonPurchasableItems()
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
                             FROM product WHERE deleted = 'y';";
@@ -385,7 +441,7 @@ namespace api.Databases
             parms.Add(new MySqlParameter("@id", MySqlDbType.Int32) { Value = id });
             await ItemNoReturnSql(sql, parms);
         }
-        
+
 
         public async Task UpdateItem(Item item, int id)
         {
@@ -496,25 +552,29 @@ namespace api.Databases
             return await SelectPurchase(sql, parms);
         }
 
-        public async Task<List<Purchase>> Q1PurchaseReport(){
+        public async Task<List<Purchase>> Q1PurchaseReport()
+        {
             string sql = @"SELECT * FROM purchase WHERE YEAR(purchaseDate) = YEAR(curdate()) AND MONTH(purchaseDate) IN (1, 2, 3);";
 
             List<MySqlParameter> parms = new();
             return await SelectPurchase(sql, parms);
         }
-        public async Task<List<Purchase>> Q2PurchaseReport(){
+        public async Task<List<Purchase>> Q2PurchaseReport()
+        {
             string sql = @"SELECT * FROM purchase WHERE YEAR(purchaseDate) = YEAR(curdate()) AND MONTH(purchaseDate) IN (4, 5, 6);";
 
             List<MySqlParameter> parms = new();
             return await SelectPurchase(sql, parms);
         }
-        public async Task<List<Purchase>> Q3PurchaseReport(){
+        public async Task<List<Purchase>> Q3PurchaseReport()
+        {
             string sql = @"SELECT * FROM purchase WHERE YEAR(purchaseDate) = YEAR(curdate()) AND MONTH(purchaseDate) IN (7, 8, 9);";
 
             List<MySqlParameter> parms = new();
             return await SelectPurchase(sql, parms);
         }
-        public async Task<List<Purchase>> Q4PurchaseReport(){
+        public async Task<List<Purchase>> Q4PurchaseReport()
+        {
             string sql = @"SELECT * FROM purchase WHERE YEAR(purchaseDate) = YEAR(curdate()) AND MONTH(purchaseDate) IN (10, 11, 12);";
 
             List<MySqlParameter> parms = new();

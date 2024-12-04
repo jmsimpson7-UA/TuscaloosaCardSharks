@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
+    <title>Employee Manager</title>
+</head>
+
+<body onload = "handleOnLoad()">
+    <div class="header">
+        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
+        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
+        <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
+        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
+    </div>
+
+    <div class="inventory-management-container">
+
+        <!-- Divider -->
+        <hr class="divider">
+
+        <!-- Divider -->
+        <hr class="divider">
+
+        <div class="inventory table">
+            <h2 class="section-heading">Purchase Report</h2>
+            <table class="inventory-table" id = "purchase">
+                
+            </table>
+            <script src ="./resources/scripts/purchreport.js"></script>
+        </div>
+    </div>
+</body>
+
+</html>

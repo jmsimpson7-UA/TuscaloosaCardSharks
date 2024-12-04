@@ -101,8 +101,8 @@ namespace api.Databases
                     purchaseID = reader.GetInt32(0),
                     purchaseDate = reader.GetDateOnly(1),
                     pointsEarned = reader.GetInt32(2),
-                    price = (reader.GetInt32(2) / 10),
-                    custID = reader.GetInt32(3),
+                    // price = (reader.GetInt32(2) / 10),
+                    custID = reader.GetInt32(3)
                 });
             }
 
@@ -167,11 +167,33 @@ namespace api.Databases
             return await SelectCustomer(sql, parms);
         }
 
+        public async Task<List<Customer>> GetCustomer(int id)
+        {
+            string sql = $"SELECT * FROM customer WHERE custID = @id;";
+            List<MySqlParameter> parms = new();
+            parms.Add(new MySqlParameter("@id", MySqlDbType.Int32) { Value = id });
+            return await SelectCustomer(sql, parms);
+        }
+
         public async Task DeleteCustomer(int id)
         {
             string sql = $"UPDATE customer SET deleted = 'y' WHERE id = @id;";
             List<MySqlParameter> parms = new();
             parms.Add(new MySqlParameter("@id", MySqlDbType.Int32) { Value = id });
+            await CustomerNoReturnSql(sql, parms);
+        }
+
+        public async Task UpdateCustomer(Customer customer, int id)
+        {
+            string sql = @$"UPDATE customer SET custID = @custID, custFName = @custFName, custLName = @custLName, custEmail = @custEmail, PointTotal = @PointTotal, deleted = @deleted
+                        WHERE custID = @custID;";
+            List<MySqlParameter> parms = new();
+            parms.Add(new MySqlParameter("@custID", MySqlDbType.Int32) { Value = id });
+            parms.Add(new MySqlParameter("@custFName", MySqlDbType.String) { Value = customer.fName });
+            parms.Add(new MySqlParameter("@custLName", MySqlDbType.String) { Value = customer.lName });
+            parms.Add(new MySqlParameter("@custEmail", MySqlDbType.String) { Value = customer.email });
+            parms.Add(new MySqlParameter("@PointTotal", MySqlDbType.Int32) { Value = customer.pointTotal });
+            parms.Add(new MySqlParameter("@deleted", MySqlDbType.String) { Value = customer.deleted });
             await CustomerNoReturnSql(sql, parms);
         }
 

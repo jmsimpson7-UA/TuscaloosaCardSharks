@@ -15,6 +15,14 @@ public class CustomerController : ControllerBase
         return await myDatabase.GetAllCustomers();
     }
 
+    [HttpGet("{id}", Name="GetCustomer")]
+    public async Task<List<Customer>> GetCustomer(int id)
+    {
+        Database myDatabase = new();
+
+        return await myDatabase.GetCustomer(id);
+    }
+
     [HttpPost]
     public async Task Post([FromBody] Customer value)
     {
@@ -27,7 +35,14 @@ public class CustomerController : ControllerBase
     public async Task Delete(int id)
     {
         Database myDatabase = new();
-        await myDatabase.DeleteEmployee(id);
+        await myDatabase.DeleteCustomer(id);
+    }
+
+    [HttpPut("{id}")]
+    public async Task Put(int id, [FromBody] Customer value)
+    {
+        Database myDatabase = new();
+        await myDatabase.UpdateCustomer(value, id);
     }
 
 }

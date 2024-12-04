@@ -1,6 +1,6 @@
 let myInventory = []
 let myCustomers = []
-const url = "http://localhost:5195/item"
+const url = "http://localhost:5195/item/purchasable"
 const curl = "http://localhost:5195/customer"
 
 async function HandleOnLoad(){
@@ -24,33 +24,32 @@ async function getAllCustomers(){
 }
 
 async function buildInventoryTable(){
-    let html = `<table>
+    let html = `<h2 class="section-heading">Current Inventory</h2>
+        <table class="inventory-table">
+        <thead>
   <tr>
     <th>ID</th>
     <th>Name</th>
     <th>Team</th>
     <th>Sport</th>
-    <th>Status</th>
     <th>Size</th>
     <th>Price</th>
     <th>Category</th>
-    <th>Name of Player</th>
     <th>Quantity</th>
-  </tr>`
+  </tr> </thead> <tbody>`
   myInventory.forEach((inventory) =>{
       html +=`<tr>
       <td>${inventory.id}</td>
       <td>${inventory.name}</td>
       <td>${inventory.team}</td>
       <td>${inventory.sport}</td>
-      <td> ${inventory.status}</td>
       <td>${inventory.size}</td>
       <td>${inventory.price}</td>
       <td>${inventory.category}</td>
-      <td>${inventory.nameOfPlayer}</td>
-      <td> ${inventory.quantity}</td>
+      <td>${inventory.quantity}</td>
     </tr>`
     })
+    html += `</tbody> </table>`
 document.getElementById("inventory").innerHTML = html
 }
 
@@ -65,18 +64,35 @@ async function buildCustomersTable(){
                     <th>Pont Total</th>
                 </tr>
             </thead>
-            </tbody>`;
+            <tbody>`;
     myCustomers.forEach((customer) => {
         html += `
         <tr>
-            <td>${customer.id}</td>
-            <td>${customer.name}</td>
+            <td>${customer.custID}</td>
+            <td>${customer.fName} ${customer.lName}</td>
             <td>${customer.email}</td>
-            <td>${customer.points}</td>
+            <td>${customer.pointTotal}</td>
         </tr>`
     });
 
     html += `</table> </tbody>`;
 
     document.getElementById("customers").innerHTML = html;
+}
+
+function handleTransaction(){
+    let date = new Date();
+    let newTransaction = {
+        purchaseDate: date,
+        pointsEarned: document.getElementById("item-price").value * 10,
+        price: document.getElementById("item-price").value,
+        custID: document.getElementById("customer-name").value
+    }
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(newTransaction),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
 }

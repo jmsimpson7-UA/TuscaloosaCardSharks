@@ -25,8 +25,8 @@
             <h2 class="section-heading">Start New Transaction</h2>
             <form class="inventory-form">
                 <div class="form-group">
-                    <label for="item-name">Customer ID</label>
-                    <input type="text" id="item-name" class="input-box" placeholder="Enter Customer ID">
+                    <label for="customer-name">Customer ID</label>
+                    <input type="text" id="customer-name" class="input-box" placeholder="Enter Customer ID">
                 </div>
 
                 <div class="form-group">
@@ -34,7 +34,12 @@
                     <input type="text" id="item-name" class="input-box" placeholder="Enter Customer ID">
                 </div>
 
-                <button type="submit" class="button-common add-button">Submit</button>
+                <div class="form-group">
+                    <label for="item-price">Price</label>
+                    <input type="text" id="item-price" class="input-box" placeholder="Enter Price of Product">
+                </div>
+
+                <button type="submit" onclick="handleTransaction()" class="button-common add-button">Submit</button>
             </form>
         </div>
 
@@ -42,9 +47,9 @@
         <hr class="divider">
 
         <!-- Inventory Table Section -->
-        <div id="inventory"></div>
+        <div id="inventory" class="inventory-table"></div>
            <!-- Inventory Table Section -->
-        <div id="customers"></div>
+        <div id="customers" class="inventory-table"></div>
     </div>
     <script src="./resources/scripts/transaction.js"></script>
 </body>

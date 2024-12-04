@@ -109,6 +109,13 @@ namespace api.Databases
             return myPurchase;
         }
 
+        public async Task<List<Purchase>> GetAllPurchases() 
+        {
+            string sql = @"SELECT * FROM purchase;";
+            List<MySqlParameter> parms = new();
+            return await SelectPurchase(sql, parms);
+        }
+
 
         public async Task<List<Employee>> GetAllEmployees()
         {
@@ -364,11 +371,10 @@ namespace api.Databases
 
         public async Task InsertPurchase(Purchase purchase)
         {
-            string sql = @$"INSERT INTO purchase (purchaseID, purchaseDate, pointsEarned, custID) 
-                            VALUES (@purchaseID, @purchaseDate, @pointsEarned, @custID);";
+            string sql = @$"INSERT INTO purchase (purchaseDate, pointsEarned, custID) 
+                            VALUES (@purchaseDate, @pointsEarned, @custID);";
             List<MySqlParameter> parms = new();
-            parms.Add(new MySqlParameter("@purchaseID", MySqlDbType.Int32) { Value = purchase.purchaseID });
-            parms.Add(new MySqlParameter("@purchaseDate", MySqlDbType.Date) { Value = purchase.purchaseDate.ToString("yyyy-mm-dd") });
+            parms.Add(new MySqlParameter("@purchaseDate", MySqlDbType.Date) { Value = DateTime.Now });
             parms.Add(new MySqlParameter("@pointsEarned", MySqlDbType.Int32) { Value = purchase.pointsEarned });
             parms.Add(new MySqlParameter("@custID", MySqlDbType.Int32) { Value = purchase.custID });
             await PurchaseNoReturnSql(sql, parms);

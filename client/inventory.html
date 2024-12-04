@@ -8,6 +8,125 @@
     <title>Current Inventory</title>
 </head>
 
+<body onload="handleOnLoad()">
+    <div class="header">
+        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
+        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
+        <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
+        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
+    </div>
+
+    <div class="inventory-management-container">
+
+        <!-- Search Section -->
+        <div class="search-container">
+            <h2 class="section-heading">Search Inventory</h2>
+            <input type="text" id="searchBox" class="search-box" placeholder="Search Inventory by Name" />
+        </div>
+
+        <!-- Divider -->
+        <hr class="divider">
+
+        <!-- Add New Inventory Section -->
+        <div class="add-container">
+            <h2 class="section-heading">Add New Inventory Item</h2>
+            <form class="inventory-form">
+                <div class="form-group">
+                    <label for="item-name">Name:</label>
+                    <input type="text" id="item-name" placeholder="Enter item name" />
+                </div>
+                <div class="form-group">
+                    <label for="item-team">Team:</label>
+                    <input type="text" id="item-team" placeholder="Enter team name" />
+                </div>
+                <div class="form-group">
+                    <label for="item-sport">Sport:</label>
+                    <input type="text" id="item-sport" placeholder="Enter sport" />
+                </div>
+                <div class="form-group">
+                    <label for="item-status">Status:</label>
+                    <input type="text" id="item-status" placeholder="Enter status (e.g., Available)" />
+                </div>
+                <div class="form-group">
+                    <label for="item-size">Size:</label>
+                    <input type="text" id="item-size" placeholder="Enter size" />
+                </div>
+                <div class="form-group">
+                    <label for="item-price">Price:</label>
+                    <input type="number" id="item-price" placeholder="Enter price" step="0.01" />
+                </div>
+                <div class="form-group">
+                    <label for="item-category">Category:</label>
+                    <input type="text" id="item-category" placeholder="Enter category" />
+                </div>
+                <div class="form-group">
+                    <label for="item-player">Name of Player:</label>
+                    <input type="text" id="item-player" placeholder="Enter player's name" />
+                </div>
+                <div class="form-group">
+                    <label for="item-quantity">Quantity:</label>
+                    <input type="number" id="item-quantity" placeholder="Enter quantity" />
+                </div>
+                <button type="button" id="addInventoryButton" class="add-button">Add Inventory</button>
+            </form>
+        </div>
+
+        <!-- Divider -->
+        <hr class="divider">
+
+        <!-- Current Inventory Table -->
+        <div class="inventory table">
+            <h2 class="section-heading">Current Inventory</h2>
+            <table class="inventory-table" id="inventoryTable">
+                <!-- Inventory rows will be dynamically inserted here -->
+            </table>
+        </div>
+    </div>
+
+    <script src="./resources/scripts/inventory.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
+    <title>Current Inventory</title>
+</head>
+
 <body onload = "handleOnLoad()">
     <div class="header">
         <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
@@ -18,10 +137,8 @@
 
     <div class="inventory-management-container">
 
-        <!-- Divider -->
         <hr class="divider">
 
-        <!-- Divider -->
         <hr class="divider">
 
         <div class="inventory table" >
@@ -33,4 +150,4 @@
     <script src ="./resources/scripts/inventory.js"></script>
 </body>
 
-</html>
+</html> -->

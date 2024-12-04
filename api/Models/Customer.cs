@@ -16,5 +16,6 @@ namespace api.Models
         public int pointTotal { get; set; }
 
         public string email { get; set; }
+        public string deleted { get; set; }
     }
 }

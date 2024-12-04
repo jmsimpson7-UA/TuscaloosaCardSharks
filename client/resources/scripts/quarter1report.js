@@ -3,7 +3,7 @@ let myItems = []
 const url = "https://"
 
 async function handleOnLoad(){
-    await getQuarterlyReport()
+    await getQuaReport()
 }
 
 async function getQuarterlyReport(){

@@ -1,122 +1,79 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
-    <title>Inventory Management</title>
+    <title>Current Inventory</title>
 </head>
 
-<body>
+<body onload="handleOnLoad()">
     <div class="header">
         <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
         <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
-        <button type="button" class="signout" onclick="window.location.href='./employeepage.html'">Back</button>
+        <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
         <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
     </div>
 
     <div class="inventory-management-container">
-        <!-- Inventory Search Section -->
+     
         <div class="inventory-search-container">
-            <h2 class="section-heading">Inventory Search</h2>
+            <h2 class="section-heading">Search Inventory</h2>
             <form class="search-form">
-                <input type="text" id="searchBox" class="search-box" placeholder="Search by item name or ID">
-                <button type="button" id="searchButton" class="button-common search-button">Search</button>
+                <input type="text" id="searchBox" class="search-box input-box" placeholder="Search Inventory by Name" />
+                <button type="button" id="searchButton" class="search-button">Search</button>
             </form>
         </div>
 
-        <!-- Divider -->
+
         <hr class="divider">
 
-        <!-- Add New Inventory Section -->
+   
         <div class="add-inventory-container">
-            <h2 class="section-heading">Add New Inventory</h2>
+            <h2 class="section-heading">Add New Inventory Item</h2>
             <form class="inventory-form">
                 <div class="form-group">
-                    <label for="item-name">Item Name:</label>
-                    <input type="text" id="item-name" class="input-box" placeholder="Enter item name">
+                    <label for="item-name">Name:</label>
+                    <input type="text" id="item-name" class="input-box" placeholder="Enter item name" />
                 </div>
-
+                </div>
                 <div class="form-group">
-                    <label for="item-category">Category:</label>
-                    <select id="item-category" class="input-box">
-                        <option value="card">Card</option>
-                        <option value="jersey">Jersey</option>
-                        <option value="ball">Ball</option>
-                        <option value="photo">Photo</option>
-                        <option value="general">General</option>
-                    </select>
+                    <label for="item-sport">Sport:</label>
+                    <input type="text" id="item-sport" class="input-box" placeholder="Enter sport" />
                 </div>
-
+                <div class="form-group">
+                    <label for="item-status">Status:</label>
+                    <input type="text" id="item-status" class="input-box" placeholder="Enter status (e.g., Available)" />
+                </div>
+                <div class="form-group">
+                    <label for="item-size">Size:</label>
+                    <input type="text" id="item-size" class="input-box" placeholder="Enter size" />
+                </div>
+                <div class="form-group">
+                    <label for="item-price">Price:</label>
+                    <input type="number" id="item-price" class="input-box" placeholder="Enter price" step="0.01" />
+                </div>
+                <div class="form-group">
+                    <label for="item-player">Name of Player:</label>
+                    <input type="text" id="item-player" class="input-box" placeholder="Enter player's name" />
+                </div>
                 <div class="form-group">
                     <label for="item-quantity">Quantity:</label>
-                    <input type="number" id="item-quantity" class="input-box" placeholder="Enter quantity" min="1">
+                    <input type="number" id="item-quantity" class="input-box" placeholder="Enter quantity" />
                 </div>
-
-                <div class="form-group">
-                    <label for="item-price">Price (USD):</label>
-                    <input type="number" id="item-price" class="input-box" placeholder="Enter price" step="0.01" min="0">
-                </div>
-
-                <div class="form-group">
-                    <label for="item-stock">In Stock:</label>
-                    <select id="item-stock" class="input-box">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="button-common add-button">Add Item</button>
+                <button type="button" id="addInventoryButton" class="add-button">Add Inventory</button>
             </form>
         </div>
 
-        <!-- Divider -->
+    
         <hr class="divider">
 
-        <!-- Inventory Table Section -->
-        <div class="inventory table">
+    
+        <div class="inventory-table-container">
             <h2 class="section-heading">Current Inventory</h2>
-            <table id="inventoryTable" class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Item ID</th>
-                        <th>Item Name</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Price (USD)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Baseball Card</td>
-                        <td>Card</td>
-                        <td>50</td>
-                        <td>1.99</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Team Jersey</td>
-                        <td>Jersey</td>
-                        <td>10</td>
-                        <td>49.99</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Basketball</td>
-                        <td>Ball</td>
-                        <td>15</td>
-                        <td>24.99</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Signed Photo</td>
-                        <td>Photo</td>
-                        <td>5</td>
-                        <td>99.99</td>
-                    </tr>
-                </tbody>
+            <table class="inventory-table" id="inventoryTable">
+              
             </table>
         </div>
     </div>
@@ -127,117 +84,83 @@
 </html>
 
 
-<!-- <!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
-    <title>Inventory Management</title>
-</head>
 
-<body>
-    <div class="header">
-        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
-        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
-        <button type="button" class="signout" onclick="window.location.href='./employeepage.html'">Back</button>
-        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
-    </div>
 
-    <div class="inventory-management-container"> -->
-        <!-- Inventory Search Section -->
-        <!-- <div class="inventory-search-container">
-            <h2 class="section-heading">Inventory Search</h2>
-            <form class="search-form">
-                <input type="text" class="search-box" placeholder="Search by item name or ID">
-                <button type="button" class="button-common search-button">Search</button>
-            </form>
-            <div class="search-results">
-                <p>No items found. Use the form below to add new inventory.</p>
-            </div>
-        </div> -->
 
-        <!-- Divider -->
-        <!-- <hr class="divider"> -->
 
-        <!-- Add New Inventory Section -->
-        <!-- <div class="add-inventory-container">
-            <h2 class="section-heading">Add New Inventory</h2>
-            <form class="inventory-form">
-                <div class="form-group">
-                    <label for="item-name">Item Name:</label>
-                    <input type="text" id="item-name" class="input-box" placeholder="Enter item name">
-                </div>
 
-                <div class="form-group">
-                    <label for="item-category">Category:</label>
-                    <select id="item-category" class="input-box">
-                        <option value="card">Card</option>
-                        <option value="jersey">Jersey</option>
-                        <option value="ball">Ball</option>
-                        <option value="photo">Photo</option>
-                        <option value="general">General</option>
-                    </select>
-                </div>
 
-                <div class="form-group">
-                    <label for="item-quantity">Quantity:</label>
-                    <input type="number" id="item-quantity" class="input-box" placeholder="Enter quantity" min="1">
-                </div>
 
-                <div class="form-group">
-                    <label for="item-price">Price (USD):</label>
-                    <input type="number" id="item-price" class="input-box" placeholder="Enter price" step="0.01" min="0">
-                </div>
 
-                <div class="form-group">
-                    <label for="item-category">In Stock:</label>
-                    <select id="item-category" class="input-box">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </div>
 
-                <button type="submit" class="button-common add-button">Add Item</button>
-            </form>
-        </div> -->
 
-        <!-- Divider -->
-        <!-- <hr class="divider"> -->
 
-        <!-- Inventory Table Section -->
-        <!-- <div class="inventory table">
-            <h2 class="section-heading">Current Inventory</h2>
-            <table class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Item ID</th>
-                        <th>Item Name</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Price (USD)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Baseball Card</td>
-                        <td>Card</td>
-                        <td>50</td>
-                        <td>1.99</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Team Jersey</td>
-                        <td>Jersey</td>
-                        <td>10</td>
-                        <td>49.99</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</body>
 
-</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

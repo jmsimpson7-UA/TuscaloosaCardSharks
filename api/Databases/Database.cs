@@ -251,6 +251,14 @@ namespace api.Databases
         public async Task<List<Item>> GetAllItems() 
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
+                            FROM product WHERE deleted = 'n';";
+            List<MySqlParameter> parms = new();
+            return await SelectItem(sql, parms);
+        }
+
+          public async Task<List<Item>> GetAllPurchasableItems() 
+        {
+            string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
                             FROM product WHERE quantity > 0 AND deleted = 'n';";
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);

@@ -16,7 +16,7 @@ async function getAllItems() {
 async function buildTable(){
     let html = `<table>
   <tr>
-    <th>Product ID</th>
+    <th>ID</th>
     <th>Name</th>
     <th>Team</th>
     <th>Sport</th>

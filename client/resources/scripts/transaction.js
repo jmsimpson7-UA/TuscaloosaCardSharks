@@ -1,12 +1,12 @@
 let myInventory = []
 let myCustomers = []
-const url = "http://localhost:5195/item"
+const url = "http://localhost:5195/item/purchasable"
 const curl = "http://localhost:5195/customer"
 
-async function handleOnLoad(){
-    getAllInventory();
+async function HandleOnLoad(){
+    await getAllInventory();
     buildInventoryTable();
-    getAllCustomers();
+    await getAllCustomers();
     buildCustomersTable();
 }
 
@@ -19,38 +19,38 @@ async function getAllInventory(){
 async function getAllCustomers(){
     let response = await fetch(curl)
     if(response.status == 200){
-        myInventory = await response.json()
+        myCustomers = await response.json()
     }
 }
 
-async function buildInventoryTable() {
+async function buildInventoryTable(){
     let html = `<h2 class="section-heading">Current Inventory</h2>
-    <table class="inventory-table">
+        <table class="inventory-table">
         <thead>
-            <tr>
-                <th>Item ID</th>
-                <th>Item Name</th>
-                <th>Category</th>
-                <th>Quantity</th>
-                <th>Price (USD)</th>
-           </tr>
-        </thead>
-        <tbody>`;
-    
-    myInventory.forEach((item) => {
-        html += `
-        <tr>
-            <td>${item.id}</td>
-            <td>${item.name}</td>
-            <td>${item.category}</td>
-            <td>${item.quantity}</td>
-            <td>${item.price}</td>
-        </tr>`
-    });
-
-    html += `</table>`;
-
-    document.getElementById("inventory").innerHTML = html;
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Team</th>
+    <th>Sport</th>
+    <th>Size</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Quantity</th>
+  </tr> </thead> <tbody>`
+  myInventory.forEach((inventory) =>{
+      html +=`<tr>
+      <td>${inventory.id}</td>
+      <td>${inventory.name}</td>
+      <td>${inventory.team}</td>
+      <td>${inventory.sport}</td>
+      <td>${inventory.size}</td>
+      <td>${inventory.price}</td>
+      <td>${inventory.category}</td>
+      <td>${inventory.quantity}</td>
+    </tr>`
+    })
+    html += `</tbody> </table>`
+document.getElementById("inventory").innerHTML = html
 }
 
 async function buildCustomersTable(){
@@ -68,14 +68,31 @@ async function buildCustomersTable(){
     myCustomers.forEach((customer) => {
         html += `
         <tr>
-            <td>${customer.id}</td>
-            <td>${customer.name}</td>
+            <td>${customer.custID}</td>
+            <td>${customer.fName} ${customer.lName}</td>
             <td>${customer.email}</td>
-            <td>${customer.points}</td>
+            <td>${customer.pointTotal}</td>
         </tr>`
     });
 
-    html += `</table>`;
+    html += `</table> </tbody>`;
 
     document.getElementById("customers").innerHTML = html;
+}
+
+function handleTransaction(){
+    let date = new Date();
+    let newTransaction = {
+        purchaseDate: date,
+        pointsEarned: document.getElementById("item-price").value * 10,
+        price: document.getElementById("item-price").value,
+        custID: document.getElementById("customer-name").value
+    }
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(newTransaction),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
 }

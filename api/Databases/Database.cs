@@ -528,22 +528,6 @@ namespace api.Databases
             return await SelectItem(sql, parms);
         }
 
-        public async Task<List<Purchase>> DailyPurchaseReport()
-        {
-            string sql = @"SELECT * FROM purchase WHERE DATE(purchaseDate) = curdate();";
-
-            List<MySqlParameter> parms = new();
-            return await SelectPurchase(sql, parms);
-        }
-
-        public async Task<List<Purchase>> MonthlyPurchaseReport()
-        {
-            string sql = @"SELECT * FROM purchase WHERE YEAR(purchaseDate) = YEAR(curdate()) AND MONTH(purchaseDate) = MONTH(curdate());";
-
-            List<MySqlParameter> parms = new();
-            return await SelectPurchase(sql, parms);
-        }
-
         public async Task<List<Purchase>> Q1PurchaseReport()
         {
             string sql = @"SELECT * FROM purchase WHERE YEAR(purchaseDate) = YEAR(curdate()) AND MONTH(purchaseDate) IN (1, 2, 3);";

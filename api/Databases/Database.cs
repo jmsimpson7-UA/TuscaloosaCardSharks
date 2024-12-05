@@ -474,14 +474,6 @@ namespace api.Databases
         }
 
         //season (Quarterly), sport, all inventory, rewards reports, purchase
-        public async Task<List<Purchase>> QuarterlyReport()
-        {
-            string sql = @"SELECT YEAR(purchaseDate) as Years, QUARTER(purchaseDate) Quarters, pointsEarned, custID
-                        FROM purchase GROUP BY YEAR(purchaseDate), QUARTER(purchaseDate) ORDER BY Years, Quarters;";
-
-            List<MySqlParameter> parms = new();
-            return await SelectPurchase(sql, parms);
-        }
 
         public async Task<List<Item>> BaseballReport()
         {
@@ -579,15 +571,6 @@ namespace api.Databases
 
             List<MySqlParameter> parms = new();
             return await SelectPurchase(sql, parms);
-        }
-
-        //WHAT DO WE WANT FOR THE REWARD REPORT??
-        public async Task<List<Customer>> RewardsReport()
-        {
-            string sql = @"SELECT custID, concat(custFName, custLName) as FullName, custEmail, PointTotal FROM customer;";
-
-            List<MySqlParameter> parms = new();
-            return await SelectCustomer(sql, parms);
         }
 
     }

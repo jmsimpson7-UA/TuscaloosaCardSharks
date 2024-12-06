@@ -300,7 +300,7 @@ namespace api.Databases
 
         public async Task DeleteEmployee(int id)
         {
-            string sql = $"UPDATE employee SET deleted = 'y' WHERE id = @id;";
+            string sql = $"UPDATE employee SET deleted = 'y' WHERE empID = @id;";
             List<MySqlParameter> parms = new();
             parms.Add(new MySqlParameter("@id", MySqlDbType.Int32) { Value = id });
             await EmployeeNoReturnSql(sql, parms);

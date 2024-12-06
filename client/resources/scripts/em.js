@@ -100,17 +100,29 @@ function handleAddForm() {
     <h2 class="section-heading">Add New Employee</h2>
     <form id="addEmployeeForm" onsubmit="return false" class="add-form">
         <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Enter username">
-        
+        <input type="text" id="username" placeholder="Enter username" required>
+
         <label for="fname">First Name:</label>
-        <input type="text" id="fname" placeholder="Enter first name">
-        
+        <input type="text" id="fname" placeholder="Enter first name" required>
+
         <label for="lname">Last Name:</label>
-        <input type="text" id="lname" placeholder="Enter last name">
-        
+        <input type="text" id="lname" placeholder="Enter last name" required>
+
         <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Enter password">
-        
+        <input type="password" id="password" placeholder="Enter password" required>
+
+        <label for="isAdmin">Is Admin:</label>
+        <select id="isAdmin">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <label for="deleted">Deleted:</label>
+        <select id="deleted">
+            <option value="n">No</option>
+            <option value="y">Yes</option>
+        </select>
+
         <button onclick="handleAdd()" class="btn btn-success">Add Employee</button>
         <button onclick="handleOnLoad()" class="btn btn-secondary">Cancel</button>
     </form>`;
@@ -119,23 +131,42 @@ function handleAddForm() {
 
 async function handleAdd() {
     let newEmployee = {
-        username: document.getElementById("username").value,
-        fname: document.getElementById("fname").value,
-        lName: document.getElementById("lname").value,
-        password: document.getElementById("password").value
+        username: document.getElementById("username").value.trim(),
+        empFName: document.getElementById("fname").value.trim(),
+        empLName: document.getElementById("lname").value.trim(),
+        empPassword: document.getElementById("password").value.trim(),
+        isAdmin: parseInt(document.getElementById("isAdmin").value), 
+        deleted: document.getElementById("deleted").value 
     };
 
     await fetch(url, {
         method: "POST",
         body: JSON.stringify(newEmployee),
         headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-        }
+    "Content-Type": "application/json; charset=UTF-8"
+    }
     });
     handleOnLoad();
 }
 
+function searchTable() {
+    const input = document.getElementById("searchBox").value.toUpperCase();
+    const table = document.getElementById("employee");
+    const tr = table.getElementsByTagName("tr");
 
+    for (let i = 1; i < tr.length; i++) {
+        const tdUsername = tr[i].getElementsByTagName("td")[1]; 
+        const tdName = tr[i].getElementsByTagName("td")[2]; 
+        const txtValueUsername = tdUsername ? tdUsername.textContent.toUpperCase() : "";
+        const txtValueName = tdName ? tdName.textContent.toUpperCase() : "";
+
+        if (txtValueUsername.indexOf(input) > -1 || txtValueName.indexOf(input) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+    }
+}
 
 
 

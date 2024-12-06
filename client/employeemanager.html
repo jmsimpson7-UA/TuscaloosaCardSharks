@@ -1,5 +1,124 @@
-<!DOCTYPE html> 
- <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
+    <title>Employee Manager</title>
+</head>
+
+<body onload="handleOnLoad()">
+    <div class="header">
+        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
+        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
+        <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
+        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
+    </div>
+
+    <div class="employee-search-container">
+        <h2 class="section-heading">Search Employees</h2>
+        <form class="search-form">
+            <input type="text" id="searchBox" class="search-box input-box" placeholder="Search Employee by Name or Username" onkeyup="searchTable()" />
+        </form>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Add Employee Section -->
+    <div class="add-employee-container">
+        <h2 class="section-heading">Add New Employee</h2>
+        <form class="employee-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" class="input-box" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" class="input-box" placeholder="Enter first name" required>
+            </div>
+            <div class="form-group">
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" class="input-box" placeholder="Enter last name" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" class="input-box" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+                <label for="isAdmin">Is Admin:</label>
+                <select id="isAdmin" class="input-box">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="deleted">Deleted:</label>
+                <select id="deleted" class="input-box">
+                    <option value="n">No</option>
+                    <option value="y">Yes</option>
+                </select>
+            </div>
+            <button type="button" id="addEmployeeButton" class="add-button" onclick="handleAdd()">Add Employee</button>
+            <button type="button" class="cancel-button" onclick="handleOnLoad()">Cancel</button>
+        </form>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Current Employees Table -->
+    <div class="inventory-management-container">
+        <h2 class="section-heading">Current Employees</h2>
+        <table class="inventory-table" id="employee">
+            <!-- The table rows will be dynamically populated by JavaScript -->
+        </table>
+    </div>
+
+    <script src="./resources/scripts/em.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html> 
+ <html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
@@ -15,6 +134,37 @@
         <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
         <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
     </div>
+
+    <div class="employee-search-container">
+        <h2 class="section-heading">Search Employees</h2>
+        <form class="search-form">
+            <input type="text" id="searchBox" class="search-box input-box" placeholder="Search Employee by Name or Role" onkeyup="searchTable()" />
+            <button type="button" id="searchButton" class="search-button" onclick="handleSearch()">Search</button>
+        </form>
+    </div>
+
+    <hr class="divider">
+
+    <div class="add-employee-container">
+        <h2 class="section-heading">Add New Employee</h2>
+        <form class="employee-form">
+            <div class="form-group">
+                <label for="employee-name">Employee Name:</label>
+                <input type="text" id="employee-name" class="input-box" placeholder="Enter employee name" />
+            </div>
+            <div class="form-group">
+                <label for="employee-role">Role:</label>
+                <input type="text" id="employee-role" class="input-box" placeholder="Enter role" />
+            </div>
+            <div class="form-group">
+                <label for="employee-salary">Salary (USD):</label>
+                <input type="number" id="employee-salary" class="input-box" placeholder="Enter salary" step="0.01" min="0" />
+            </div>
+            <button type="button" id="addEmployeeButton" class="add-button" onclick="handleAdd()">Add Employee</button>
+        </form>
+    </div>
+
+    <hr class="divider">
 
     <div class="inventory-management-container">
 
@@ -32,7 +182,7 @@
     </div>
 </body>
 
-</html> 
+</html> -->
 
 
 

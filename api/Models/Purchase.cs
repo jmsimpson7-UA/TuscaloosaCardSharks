@@ -9,7 +9,6 @@ namespace api.Models
     {
         public int purchaseID { get; set; }
         public DateOnly purchaseDate { get; set; }
-        public int pointsEarned { get; set; }
         public int price { get; set; }
         public int custID { get; set; }
     }

@@ -100,8 +100,7 @@ namespace api.Databases
                 {
                     purchaseID = reader.GetInt32(0),
                     purchaseDate = reader.GetDateOnly(1),
-                    pointsEarned = reader.GetInt32(2),
-                    price = (reader.GetInt32(2) / 10),
+                    price = reader.GetInt32(2),
                     custID = reader.GetInt32(3)
                 });
             }
@@ -500,11 +499,11 @@ namespace api.Databases
 
         public async Task InsertPurchase(Purchase purchase)
         {
-            string sql = @$"INSERT INTO purchase (purchaseDate, pointsEarned, custID) 
-                            VALUES (@purchaseDate, @pointsEarned, @custID);";
+            string sql = @$"INSERT INTO purchase (purchaseDate, price, custID) 
+                            VALUES (@purchaseDate, @price, @custID);";
             List<MySqlParameter> parms = new();
             parms.Add(new MySqlParameter("@purchaseDate", MySqlDbType.Date) { Value = DateTime.Now });
-            parms.Add(new MySqlParameter("@pointsEarned", MySqlDbType.Int32) { Value = purchase.pointsEarned });
+            parms.Add(new MySqlParameter("@price", MySqlDbType.Int32) { Value = purchase.price });
             parms.Add(new MySqlParameter("@custID", MySqlDbType.Int32) { Value = purchase.custID });
             await PurchaseNoReturnSql(sql, parms);
         }

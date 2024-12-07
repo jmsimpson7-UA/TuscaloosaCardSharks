@@ -54,5 +54,12 @@ namespace api.Controllers
 
             return await myDatabase.FootballReport();
         }
+
+        [HttpGet("SportReport")]
+        public async Task<List<SportsPurchase>> GetSportReport()
+        {
+            Database myDatabase = new();
+            return await myDatabase.GetSportReport();
+        }
     }
 }

@@ -5,6 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
+    <title>Customer Manager</title>
+</head>
+
+<body onload="handleOnLoad()">
+    <div class="header">
+        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
+        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
+        <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
+        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
+    </div>
+
+    <!-- Customer Search Section -->
+    <div class="customer-search-container">
+        <h2 class="section-heading">Search Customers</h2>
+        <form class="search-form">
+            <input type="text" id="searchBox" class="search-box input-box" placeholder="Search Customer by Name or Email" onkeyup="searchTable()" />
+        </form>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Add New Customer Section -->
+    <div class="add-customer-container">
+        <h2 class="section-heading">Add New Customer</h2>
+        <form class="customer-form">
+            <div class="form-group">
+                <label for="fName">First Name:</label>
+                <input type="text" id="fName" class="input-box" placeholder="Enter first name" required>
+            </div>
+            <div class="form-group">
+                <label for="lName">Last Name:</label>
+                <input type="text" id="lName" class="input-box" placeholder="Enter last name" required>
+            </div>
+            <div class="form-group">
+                <label for="pointTotal">Points:</label>
+                <input type="number" id="pointTotal" class="input-box" placeholder="Enter points" step="1" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="input-box" placeholder="Enter email" required>
+            </div>
+            <button type="button" class="add-button" onclick="handleAdd()">Add Customer</button>
+            <button type="button" class="cancel-button" onclick="handleOnLoad()">Cancel</button>
+        </form>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Current Customers Table -->
+    <div class="inventory-management-container">
+        <h2 class="section-heading">Current Customers</h2>
+        <table class="inventory-table" id="customer">
+            <!-- The table rows will be dynamically populated by JavaScript -->
+        </table>
+    </div>
+
+    <script src="./resources/scripts/customer.js"></script>
+</body>
+
+</html>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
     <title>Employee Management</title>
 </head>
 
@@ -17,24 +101,24 @@
     </div>
 
     <div class="inventory-management-container">
-        <!-- Inventory Search Section -->
-        <div class="inventory-search-container">
+        <!-Inventory Search Section -->
+        <!-- <div class="inventory-search-container">
             <h2 class="section-heading">Customer Search</h2>
             <form class="search-form">
                 <input type="text" class="search-box" placeholder="Search by Customer Name">
                 <button type="button" class="button-common search-button">Search</button>
             </form>
             <div class="search-results">
-                <!-- Placeholder for search results -->
-                <p>No items found. Use the form below to add new inventory.</p>
+                <!-Placeholder for search results -->
+                <!-- <p>No items found. Use the form below to add new inventory.</p>
             </div>
-        </div>
+        </div> --> 
 
         <!-- Divider -->
-        <hr class="divider">
+        <!-- <hr class="divider"> -->
 
         <!-- Add New Inventory Section -->
-        <div class="add-inventory-container">
+        <!-- <div class="add-inventory-container">
             <h2 class="section-heading">Add New Customer</h2>
             <form class="inventory-form">
                 <div class="form-group">
@@ -54,13 +138,13 @@
 
                 <button type="submit" class="button-common add-button">Add Customer</button>
             </form>
-        </div>
+        </div> -->
 
         <!-- Divider -->
-        <hr class="divider">
+        <!-- <hr class="divider"> -->
 
         <!-- Inventory Table Section -->
-        <div class="inventory table">
+        <!-- <div class="inventory table">
             <h2 class="section-heading">Current Customers</h2>
             <table class="inventory-table">
                 <thead>
@@ -84,7 +168,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
-</body>
+    </div> -->
+<!-- </body>
 
-</html>
+</html> --> 

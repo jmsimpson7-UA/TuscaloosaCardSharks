@@ -270,15 +270,23 @@ namespace api.Databases
 
         public async Task InsertCustomer(Customer customer)
         {
-            string sql = @$"INSERT INTO customer (custID, custFName, custLName, custEmail, PointTotal)
-                            VALUES (@custID, @custFName, @custLName, @custEmail, @PointTotal);";
+            // string sql = @$"INSERT INTO customer (custID, custFName, custLName, custEmail, PointTotal)
+            //                 VALUES (@custID, @custFName, @custLName, @custEmail, @PointTotal);";
+            // List<MySqlParameter> parms = new();
+            // parms.Add(new MySqlParameter("custID", MySqlDbType.Int32) { Value = customer.custID });
+            // parms.Add(new MySqlParameter("@custFName", MySqlDbType.String) { Value = customer.fName });
+            // parms.Add(new MySqlParameter("@custLName", MySqlDbType.String) { Value = customer.lName });
+            // parms.Add(new MySqlParameter("@custEmail", MySqlDbType.String) { Value = customer.email });
+            // parms.Add(new MySqlParameter("@PointTotal", MySqlDbType.String) { Value = customer.pointTotal });
+            // await EmployeeNoReturnSql(sql, parms);
+            string sql = @$"INSERT INTO customer (custFName, custLName, custEmail, PointTotal, deleted)
+                    VALUES (@custFName, @custLName, @custEmail, @PointTotal, 'n');";
             List<MySqlParameter> parms = new();
-            parms.Add(new MySqlParameter("custID", MySqlDbType.Int32) { Value = customer.custID });
             parms.Add(new MySqlParameter("@custFName", MySqlDbType.String) { Value = customer.fName });
             parms.Add(new MySqlParameter("@custLName", MySqlDbType.String) { Value = customer.lName });
             parms.Add(new MySqlParameter("@custEmail", MySqlDbType.String) { Value = customer.email });
-            parms.Add(new MySqlParameter("@PointTotal", MySqlDbType.String) { Value = customer.pointTotal });
-            await EmployeeNoReturnSql(sql, parms);
+            parms.Add(new MySqlParameter("@PointTotal", MySqlDbType.Int32) { Value = customer.pointTotal });
+            await CustomerNoReturnSql(sql, parms); 
         }
 
         private async Task ItemNoReturnSql(string sql, List<MySqlParameter> parms)

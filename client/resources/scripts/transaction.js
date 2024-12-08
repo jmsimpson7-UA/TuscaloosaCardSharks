@@ -8,6 +8,7 @@ async function HandleOnLoad(){
     buildInventoryTable();
     await getAllCustomers();
     buildCustomersTable();
+    UpdateInventory(1);
 }
 
 async function getAllInventory(){
@@ -120,13 +121,15 @@ async function handleTransaction(event) {
         alert(error.message);
     }
 
+    UpdateCustomerPoints(customerId, price);
+    UpdateInventory(itemInput)
     
 }
 
 
 async function UpdateCustomerPoints(customerID, price){
     let newPoints = price * 10;
-    let customerId = customerID
+    let customerId = customerID;
 
     try{
         let response = await fetch(`http://localhost:5195/customer/${customerId}`);
@@ -163,5 +166,53 @@ async function UpdateCustomerPoints(customerID, price){
         } catch (error) {
             console.error("Error updating points:", error);
             alert("Error updating points: " + error.message);
+        }
+}
+
+async function UpdateInventory(itemID){
+    let productId = itemID;
+
+    try{
+        let response = await fetch(`http://localhost:5195/Item/${productId}`);
+
+        if (!response.ok) {
+            throw new Error("Product not found.");
+        }
+
+        let product = await response.json();
+        let productID = product[0].productID;
+        console.log(product[0].quantity)
+        let newQuantity = product[0].quantity - 1;
+        console.log("new quant " + newQuantity);
+
+        let updatedProduct = {
+            id: productID,
+            name: product[0].name,
+            team: product[0].team,
+            sport: product[0].sport,
+            status: product[0].status,
+            size:  product[0].size,
+            price: product[0].price,
+            category: product[0].category,
+            nameOfPlayer: product[0].nameOfPlayer,
+            quantity: newQuantity
+        }
+
+        let updateResponse = await fetch(`http://localhost:5195/Item/${productId}`, {
+            method: "PUT",
+            body: JSON.stringify(updatedProduct),
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            }
+        });
+            if (updateResponse.ok) {
+                alert("Product quantity updated successfully.");
+            } else {
+                const errorText = await updateResponse.text();
+                throw new Error("Failed to update quantity: " + errorText);
+            }
+        } catch (error) {
+            console.error("Error updating quantity:", error);
+            alert("Error updating quantity: " + error.message);
         }
 }

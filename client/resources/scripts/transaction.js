@@ -8,7 +8,6 @@ async function HandleOnLoad(){
     buildInventoryTable();
     await getAllCustomers();
     buildCustomersTable();
-    UpdateCustomerPoints(1);
 }
 
 async function getAllInventory(){
@@ -125,8 +124,44 @@ async function handleTransaction(event) {
 }
 
 
-async function UpdateCustomerPoints(customerID){
-    let response = await fetch(`http://localhost:5195/customer/${customerID}`);
-    let customer = await response.json();
-    console.log(customer);
+async function UpdateCustomerPoints(customerID, price){
+    let newPoints = price * 10;
+    let customerId = customerID
+
+    try{
+        let response = await fetch(`http://localhost:5195/customer/${customerId}`);
+
+        if (!response.ok) {
+            throw new Error("Customer not found.");
+        }
+
+        let customer = await response.json();
+        let customerID = customer[0].custID;
+
+        let updatedCustomer = {
+            custID: customerID,
+            fName: customer[0].fName,
+            lName: customer[0].lName,
+            pointTotal: customer[0].pointTotal + newPoints,
+            email: customer[0].email,
+            deleted: customer[0].deleted
+        }
+
+        let updateResponse = await fetch(`http://localhost:5195/customer/${customerId}`, {
+            method: "PUT",
+            body: JSON.stringify(updatedCustomer),
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            }
+        });
+            if (updateResponse.ok) {
+                alert("Customer points updated successfully.");
+            } else {
+                const errorText = await updateResponse.text();
+                throw new Error("Failed to update points: " + errorText);
+            }
+        } catch (error) {
+            console.error("Error updating points:", error);
+            alert("Error updating points: " + error.message);
+        }
 }

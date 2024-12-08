@@ -8,6 +8,7 @@ async function HandleOnLoad(){
     buildInventoryTable();
     await getAllCustomers();
     buildCustomersTable();
+    UpdateCustomerPoints(1);
 }
 
 async function getAllInventory(){
@@ -98,7 +99,7 @@ async function handleTransaction(event) {
 
         let newTransaction = {
             purchaseDate: new Date().toISOString().split("T")[0],
-            pointsEarned: price * 10,
+            price: price * 10,
             custID: customerId
         };
 
@@ -124,3 +125,8 @@ async function handleTransaction(event) {
 }
 
 
+async function UpdateCustomerPoints(customerID){
+    let response = await fetch(`http://localhost:5195/customer/${customerID}`);
+    let customer = await response.json();
+    console.log(customer);
+}

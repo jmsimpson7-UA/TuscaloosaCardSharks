@@ -100,13 +100,40 @@ namespace api.Databases
                 {
                     purchaseID = reader.GetInt32(0),
                     purchaseDate = reader.GetDateOnly(1),
-                    pointsEarned = reader.GetInt32(2),
-                    price = (reader.GetInt32(2) / 10),
+                    price = reader.GetInt32(2),
                     custID = reader.GetInt32(3)
                 });
             }
 
             return myPurchase;
+        }
+
+        public async Task<List<SportsPurchase>> GetSportReport()
+        {
+            List<SportsPurchase> reports = new();
+            string sql = @"
+        SELECT sport, COUNT(*) AS timesPurchased
+        FROM product p
+        JOIN productPurchased pp ON p.productID = pp.productID
+        GROUP BY sport
+        ORDER BY COUNT(*) DESC;
+    ";
+
+            using var connection = new MySqlConnection(cs);
+            await connection.OpenAsync();
+            using var command = new MySqlCommand(sql, connection);
+
+            using var reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                reports.Add(new SportsPurchase
+                {
+                    Sport = reader.GetString(0),
+                    TimesPurchased = reader.GetInt32(1)
+                });
+            }
+
+            return reports;
         }
 
         public async Task<List<ProductPurchase>> SelectProductPurchase(string sql, List<MySqlParameter> parms)
@@ -286,7 +313,7 @@ namespace api.Databases
             parms.Add(new MySqlParameter("@custLName", MySqlDbType.String) { Value = customer.lName });
             parms.Add(new MySqlParameter("@custEmail", MySqlDbType.String) { Value = customer.email });
             parms.Add(new MySqlParameter("@PointTotal", MySqlDbType.Int32) { Value = customer.pointTotal });
-            await CustomerNoReturnSql(sql, parms); 
+            await CustomerNoReturnSql(sql, parms);
         }
 
         private async Task ItemNoReturnSql(string sql, List<MySqlParameter> parms)
@@ -475,11 +502,11 @@ namespace api.Databases
 
         public async Task InsertPurchase(Purchase purchase)
         {
-            string sql = @$"INSERT INTO purchase (purchaseDate, pointsEarned, custID) 
-                            VALUES (@purchaseDate, @pointsEarned, @custID);";
+            string sql = @$"INSERT INTO purchase (purchaseDate, price, custID) 
+                            VALUES (@purchaseDate, @price, @custID);";
             List<MySqlParameter> parms = new();
             parms.Add(new MySqlParameter("@purchaseDate", MySqlDbType.Date) { Value = DateTime.Now });
-            parms.Add(new MySqlParameter("@pointsEarned", MySqlDbType.Int32) { Value = purchase.pointsEarned });
+            parms.Add(new MySqlParameter("@price", MySqlDbType.Int32) { Value = purchase.price });
             parms.Add(new MySqlParameter("@custID", MySqlDbType.Int32) { Value = purchase.custID });
             await PurchaseNoReturnSql(sql, parms);
         }
@@ -489,7 +516,7 @@ namespace api.Databases
         public async Task<List<Item>> BaseballReport()
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
-                            FROM product WHERE sport = 'Baseball';";
+                            FROM product WHERE sport = 'Baseball' AND deleted = 'n';";
 
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
@@ -498,7 +525,7 @@ namespace api.Databases
         public async Task<List<Item>> FootballReport()
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
-                            FROM product WHERE sport = 'Football';";
+                            FROM product WHERE sport = 'Football' AND deleted = 'n';";
 
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
@@ -507,7 +534,7 @@ namespace api.Databases
         public async Task<List<Item>> BasketballReport()
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
-                            FROM product WHERE sport = 'Basketball';";
+                            FROM product WHERE sport = 'Basketball' AND deleted = 'n';";
 
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
@@ -516,7 +543,7 @@ namespace api.Databases
         public async Task<List<Item>> HockeyReport()
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
-                            FROM product WHERE sport = 'Hockey';";
+                            FROM product WHERE sport = 'Hockey' AND deleted = 'n';";
 
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);
@@ -525,7 +552,7 @@ namespace api.Databases
         public async Task<List<Item>> SoccerReport()
         {
             string sql = @"SELECT productID, productName, price, status, team, category, sport, quantity, coalesce(size, ' '), coalesce(nameOfPlayer, ' ')
-                            FROM product WHERE sport = 'Soccer';";
+                            FROM product WHERE sport = 'Soccer' AND deleted = 'n';";
 
             List<MySqlParameter> parms = new();
             return await SelectItem(sql, parms);

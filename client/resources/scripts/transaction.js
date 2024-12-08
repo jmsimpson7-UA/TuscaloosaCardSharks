@@ -8,7 +8,6 @@ async function HandleOnLoad(){
     buildInventoryTable();
     await getAllCustomers();
     buildCustomersTable();
-    UpdateInventory(1);
 }
 
 async function getAllInventory(){

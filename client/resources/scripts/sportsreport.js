@@ -8,6 +8,7 @@ const surl = "http://localhost:5195/api/Sport/SoccerReport"
 const baskurl = "http://localhost:5195/api/Sport/BasketballReport"
 const furl = "http://localhost:5195/api/Sport/FootballReport"
 const baseurl = "http://localhost:5195/api/Sport/BaseballReport"
+const sporturl = "http://localhost:5195/api/Sport/SportReport"
 
 async function handleOnLoad() {
     await getHockeyReport()
@@ -15,11 +16,21 @@ async function handleOnLoad() {
     await getBasketballReport()
     await getFootballReport()
     await getBaseballReport()
+    await getPurchaseReport()
+    buildPurchaseTable()
     buildTable()
     buildSoccerTable()
     buildBasketballTable()
     buildFootballTable()
     buildBaseballTable()
+}
+
+async function getPurchaseReport(){
+  let response = await fetch(sporturl);
+  if (response.status === 200) {
+      myPurchase = await response.json();
+  }
+  console.log(myPurchase);
 }
 
 async function getSoccerReport(){
@@ -61,6 +72,22 @@ async function getBaseballReport() {
     }
     console.log(myBaseball);
 }
+
+async function buildPurchaseTable(){
+  let html = `<table>
+<tr>
+  <th>Sport</th>
+  <th>Times Purchased</th>
+</tr>`
+myPurchase.forEach((item) =>{
+    html +=`<tr>
+    <td>${item.sport}</td>
+    <td>${item.timesPurchased}</td>
+  </tr>`
+  })
+document.getElementById("purchase").innerHTML = html
+}
+
 async function buildTable(){
     let html = `<table>
   <tr>

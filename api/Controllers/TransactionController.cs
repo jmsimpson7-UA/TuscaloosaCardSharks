@@ -44,7 +44,7 @@ public class TransactionController : ControllerBase
         return await myDatabase.GetAllProductPurchases();
     }
 
-[HttpPost ()]
+[HttpPost ("PostProductPurchase")]
     public async Task<IActionResult> PostProductPurchase([FromBody] ProductPurchase value)
     {
         if (value == null)

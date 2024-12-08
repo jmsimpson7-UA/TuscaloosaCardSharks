@@ -18,7 +18,6 @@ async function buildTable(){
   <tr>
     <th>Purchase ID</th>
     <th>Purchase Date</th>
-    <th>Points Earned</th>
     <th>Price</th>
     <th>Customer ID</th>
   </tr>`
@@ -26,7 +25,6 @@ async function buildTable(){
       html +=`<tr>
       <td>${purchase.purchaseID}</td>
       <td>${purchase.purchaseDate}</td>
-      <td>${purchase.pointsEarned}</td>
       <td>${purchase.price}</td>
       <td>${purchase.custID}</td>
 

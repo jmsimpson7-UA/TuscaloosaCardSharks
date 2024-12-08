@@ -13,14 +13,6 @@ namespace api.Controllers
     [ApiController]
     public class ReportController
     {
-        [HttpGet("SportsReport")]
-        public async Task<List<Purchase>> getSportsReport()
-        {
-
-            Database myDatabase = new();
-
-            return await myDatabase.QuarterlyReport();
-        }
 
         [HttpGet("FirstQuarterReport")]
         public async Task<List<Purchase>> getFirstQuarterReport()
@@ -56,15 +48,6 @@ namespace api.Controllers
             Database myDatabase = new();
 
             return await myDatabase.Q4PurchaseReport();
-        }
-
-        [HttpGet("SalesReport")]
-        public async Task<List<Purchase>> getAllSalesReport()
-        {
-
-            Database myDatabase = new();
-
-            return await myDatabase.QuarterlyReport();
         }
     }
 }

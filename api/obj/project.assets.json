@@ -615,19 +615,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\matth\\.nuget\\packages\\": {}
+    "/Users/ccsimpson/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MIS 321\\TuscaloosaCardSharks\\api\\api.csproj",
+      "projectUniqueName": "/Users/ccsimpson/Desktop/mis321/TuscaloosaCardSharks/api/api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\MIS 321\\TuscaloosaCardSharks\\api\\api.csproj",
-      "packagesPath": "C:\\Users\\matth\\.nuget\\packages\\",
-      "outputPath": "C:\\MIS 321\\TuscaloosaCardSharks\\api\\obj\\",
+      "projectPath": "/Users/ccsimpson/Desktop/mis321/TuscaloosaCardSharks/api/api.csproj",
+      "packagesPath": "/Users/ccsimpson/.nuget/packages/",
+      "outputPath": "/Users/ccsimpson/Desktop/mis321/TuscaloosaCardSharks/api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\matth\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/ccsimpson/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -645,11 +645,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -684,7 +679,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

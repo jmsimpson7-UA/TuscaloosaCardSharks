@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
     <title>Employee Manager</title>
 </head>
-
+ 
 <body onload="handleOnLoad()">
     <div class="header">
         <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
         <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
-        <button type="button" class="back" onclick="window.location.href='./adminpage.html'">Back</button>
+        <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
         <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
     </div>
-    <div class="inventory-management-container">
+ 
     <div class="employee-search-container">
         <h2 class="section-heading">Search Employees</h2>
         <form class="search-form">
             <input type="text" id="searchBox" class="search-box input-box" placeholder="Search Employee by Name or Username" onkeyup="searchTable()" />
         </form>
     </div>
-
+ 
     <hr class="divider">
-
-    <!-- Add Employee Section -->
+ 
+ 
     <div class="add-employee-container">
         <h2 class="section-heading">Add New Employee</h2>
         <form class="employee-form">
@@ -52,274 +52,23 @@
                     <option value="1">Yes</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="deleted">Deleted:</label>
-                <select id="deleted" class="input-box">
-                    <option value="n">No</option>
-                    <option value="y">Yes</option>
-                </select>
-            </div>
             <button type="button" id="addEmployeeButton" class="add-button" onclick="handleAdd()">Add Employee</button>
             <button type="button" class="cancel-button" onclick="handleOnLoad()">Cancel</button>
         </form>
     </div>
-
+ 
+ 
     <hr class="divider">
-
-    <!-- Current Employees Table -->
+ 
+ 
     <div class="inventory-management-container">
         <h2 class="section-heading">Current Employees</h2>
         <table class="inventory-table" id="employee">
-            <!-- The table rows will be dynamically populated by JavaScript -->
+           
         </table>
     </div>
-
+ 
     <script src="./resources/scripts/em.js"></script>
-    </div>
 </body>
-
+ 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html> 
- <html lang="en"> 
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
-    <title>Employee Manager</title>
-</head>
-
-<body onload = "handleOnLoad()">
-    <div class="header">
-        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
-        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
-        <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
-        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
-    </div>
-
-    <div class="employee-search-container">
-        <h2 class="section-heading">Search Employees</h2>
-        <form class="search-form">
-            <input type="text" id="searchBox" class="search-box input-box" placeholder="Search Employee by Name or Role" onkeyup="searchTable()" />
-            <button type="button" id="searchButton" class="search-button" onclick="handleSearch()">Search</button>
-        </form>
-    </div>
-
-    <hr class="divider">
-
-    <div class="add-employee-container">
-        <h2 class="section-heading">Add New Employee</h2>
-        <form class="employee-form">
-            <div class="form-group">
-                <label for="employee-name">Employee Name:</label>
-                <input type="text" id="employee-name" class="input-box" placeholder="Enter employee name" />
-            </div>
-            <div class="form-group">
-                <label for="employee-role">Role:</label>
-                <input type="text" id="employee-role" class="input-box" placeholder="Enter role" />
-            </div>
-            <div class="form-group">
-                <label for="employee-salary">Salary (USD):</label>
-                <input type="number" id="employee-salary" class="input-box" placeholder="Enter salary" step="0.01" min="0" />
-            </div>
-            <button type="button" id="addEmployeeButton" class="add-button" onclick="handleAdd()">Add Employee</button>
-        </form>
-    </div>
-
-    <hr class="divider">
-
-    <div class="inventory-management-container">
-
-        <hr class="divider">
-
-        <hr class="divider">
-
-        <div class="inventory table">
-            <h2 class="section-heading">Current Employees</h2>
-            <table class="inventory-table" id = "employee">
-                
-            </table>
-            <script src ="./resources/scripts/em.js"></script>
-        </div>
-    </div>
-</body>
-
-</html> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Dummy data html -->
-
-
-
-<!-- <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./resources/styles/employeepage.css">
-    <title>Employee Manager</title>
-</head>
-
-<body>
-    <div class="header">
-        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
-        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
-        <button type="button" class="signout" onclick="window.location.href='./adminpage.html'">Back</button>
-        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
-    </div>
-
-    <div class="employee-management-container">
-        <div class="employee-search-container">
-            <h2 class="section-heading">Employee Search</h2>
-            <form class="search-form">
-                <input type="text" id="searchBox" class="search-box" placeholder="Search by Employee Name or ID">
-                <button type="button" id="searchButton" class="button-common search-button">Search</button>
-            </form> 
-        </div>  
-
-        <hr class="divider">
-
-             <div class="add-employee-container">
-            <h2 class="section-heading">Add New Employee</h2>
-            <form class="employee-form">
-                <div class="form-group">
-                    <label for="employee-name">Employee Name:</label>
-                    <input type="text" id="employee-name" class="input-box" placeholder="Enter employee name">
-                </div> 
-
-                <div class="form-group">
-                    <label for="employee-role">Role:</label>
-                    <input type="text" id="employee-role" class="input-box" placeholder="Enter role">
-                </div>
-
-                <div class="form-group">
-                    <label for="employee-salary">Salary (USD):</label>
-                    <input type="number" id="employee-salary" class="input-box" placeholder="Enter salary" step="0.01" min="0">
-                </div>
-
-                <button type="button" id="addEmployeeButton" class="button-common add-button">Add Employee</button>
-            </form>
-        </div>  
-
-        <hr class="divider">
-
-        <div class="employee-table">
-            <h2 class="section-heading">Current Employees</h2>
-            <table id="employeeTable" class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Employee ID</th>
-                        <th>Employee Name</th>
-                        <th>Role</th>
-                        <th>Salary (USD)</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>Manager</td>
-                        <td>50000</td>
-                        <td><button class="edit-button">Edit</button></td>
-                        <td><button class="delete-button">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>Sales Associate</td>
-                        <td>35000</td>
-                        <td><button class="edit-button">Edit</button></td>
-                        <td><button class="delete-button">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Robert Johnson</td>
-                        <td>Cashier</td>
-                        <td>30000</td>
-                        <td><button class="edit-button">Edit</button></td>
-                        <td><button class="delete-button">Delete</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <script src="./resources/scripts/employeepage.js"></script>
-</body>
-
-</html> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

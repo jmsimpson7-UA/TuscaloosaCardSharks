@@ -94,11 +94,10 @@ async function handleTransaction(event) {
 
         let price = parseInt(priceInput.value);
         var customerId = parseInt(customerInput.value);
-        console.log(customerId);
 
         let newTransaction = {
             purchaseDate: new Date().toISOString().split("T")[0],
-            price: price * 10,
+            price: price,
             custID: customerId
         };
 
@@ -109,7 +108,11 @@ async function handleTransaction(event) {
                 "Content-Type": "application/json; charset=UTF-8"
             }
         });
-
+        await UpdateCustomerPoints(customerId, price);
+        console.log(itemInput.value);
+        await UpdateInventory(itemInput.value);
+        await HandleProductPurchased(itemInput.value, customerInput.value);
+        
         if (response.ok) {
             alert("Transaction created successfully!");
         } else {
@@ -119,10 +122,6 @@ async function handleTransaction(event) {
         console.error("Error during transaction:", error);
         alert(error.message);
     }
-
-    UpdateCustomerPoints(customerId, price);
-    UpdateInventory(itemInput);
-    HandleProductPurchased(itemInput, customerId);
     
 }
 
@@ -171,7 +170,7 @@ async function UpdateCustomerPoints(customerID, price){
 
 async function UpdateInventory(itemID){
     let productId = itemID;
-
+    console.log(productId);
     try{
         let response = await fetch(`http://localhost:5195/Item/${productId}`);
 

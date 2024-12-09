@@ -18,13 +18,13 @@ async function buildTable(){
   <tr>
     <th>Purchase Date</th>
     <th>Purchase ID</th>
-    <th>Point Total</th>
+    <th>Price</th>
   </tr>`
   myQ4Purchases.forEach((purchase) =>{
       html +=`<tr>
       <td>${purchase.purchaseDate}</td>
       <td>${purchase.purchaseID}</td>
-      <td>${purchase.pointsEarned}</td>
+      <td>${purchase.price}</td>
     </tr>`
     })
 document.getElementById("app").innerHTML = html

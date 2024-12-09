@@ -9,7 +9,6 @@ body {
 /* Header Section */
 .header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     background: #003748;
@@ -20,21 +19,23 @@ body {
 .shark {
     width: 150px;
     height: auto;
+    margin-right: 500px;
+
 }
 
 .tuscaloosa-card-sharks {
+    display: flex;
     color: #E61610;
     font-size: 48px;
     margin: 0;
 }
 
-/* Sign Out Button */
 .signout {
     background: #D9534F;
     color: #FFFFFF;
     border: 1px solid #D43F3A;
     border-radius: 8px;
-    padding: 10px 20px;
+    padding: 10px 15px;
     font-size: 14px;
     cursor: pointer;
 }

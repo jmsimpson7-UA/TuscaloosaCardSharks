@@ -36,6 +36,19 @@ body {
     cursor: pointer;
 }
 
+.back {
+
+    background: #D9534F;
+    color: #FFFFFF;
+    border: 1px solid #D43F3A;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 500px;
+}
+
 .inventory-management-container {
     margin: 20px auto;
     padding: 20px;

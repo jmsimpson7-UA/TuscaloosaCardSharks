@@ -1,69 +1,53 @@
-<!DOCTYPE html> 
-
-<html lang="en"> 
-
+<!DOCTYPE html>
+<html lang="en">
  
-
-<head> 
-
-    <meta charset="UTF-8"> 
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
-    <link rel="stylesheet" href="./resources/styles/rewardseditor.css"> 
-
-    <title>Rewards Program Manager</title> 
-
-</head> 
-
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="./resources/styles/inventorymanager.css">
+ <title>Rewards Points Manager</title>
+</head>
  
-
-<body> 
-
-    <div class="header"> 
-
-        <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1> 
-
-        <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark"> 
-        <button
-        type="button"
-        class="signout"
-        onclick="window.location.href='./adminpage.html'"
-      >
-        Back
-      </button>
-
-        <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button> 
-
-
-    </div> 
-
+<body>
+ <div class="header">
+ <h1 class="tuscaloosa-card-sharks">Tuscaloosa Card Sharks</h1>
+ <img src="./resources/styles/download.png" alt="Tuscaloosa Card Sharks Logo" class="shark">
+ <button type="button" class="back" onclick="window.location.href='./adminpage.html'">Back</button>
+ <button type="button" class="signout" onclick="window.location.href='./landingpage.html'">Sign Out</button>
+ </div>
+ <div class="inventory-management-container">
  
-
-    <main> 
-
-        <div class="container"> 
-
-            <h2>Edit Rewards Program</h2> 
-
-            <p>Current Points Per Dollar: <span id="current-points">1</span></p> 
-
-            <label for="points-input">Set Points Per Dollar:</label> 
-
-            <input type="number" id="points-input" min="1" max="100" value="1"> 
-
-            <button id="save-button">Save Changes</button> 
-
-            <p id="success-message" class="hidden">Changes saved successfully!</p> 
-
-        </div> 
-
-    </main> 
-
+ <div class="inventory-table">
+ <h2 class="section-heading">Current Point Redemption Options</h2>
+ <table class="inventory-table">
+ <thead>
+ <tr>
+ <th>Point Total</th>
+ <th>Description</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>500</td>
+ <td>1 Free Alabama Shaker</td>
+ </tr>
+ <tr>
+ <td>1000</td>
+ <td>1 Free TCS Mug</td>
+ </tr>
+ <tr>
+ <td>2000</td>
+ <td>1 Free TCS T-Shirt</td>
+ </tr>
+ <tr>
+ <td>5000</td>
+ <td>20% Off One Purchase</td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+</div>
+</body>
  
-
-</body> 
-
-<script src="./resources/scripts/rewardseditor.js"></script> 
-
-</html> 
+</html>

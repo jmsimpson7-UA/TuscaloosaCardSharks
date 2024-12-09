@@ -178,9 +178,9 @@ namespace api.Databases
         public async Task<List<Purchase>> GetPurchaseInfo(int custID)
         {
             DateOnly date = DateOnly.FromDateTime(DateTime.Now);
-            string sql = @"SELECT * FROM purchase where purchaseID = @ID AND purchaseDate = @date;";
+            string sql = @"SELECT * FROM purchase where custID = @ID AND purchaseDate = @date;";
             List<MySqlParameter> parms = new();
-            parms.Add(new MySqlParameter("@id", MySqlDbType.Int32) { Value = custID });
+            parms.Add(new MySqlParameter("@ID", MySqlDbType.Int32) { Value = custID });
             parms.Add(new MySqlParameter("@date", MySqlDbType.Date) { Value = date });
             return await SelectPurchase(sql, parms);
         }

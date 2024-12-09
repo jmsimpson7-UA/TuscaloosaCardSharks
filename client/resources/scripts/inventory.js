@@ -129,6 +129,69 @@ async function handleDelete(itemID) {
 }
 
 
+function handleAddForm() {
+    let html = `
+    <h2 class="section-heading">Add New Item</h2>
+    <form id="addItemForm" onsubmit="return false" class="add-form">
+        <label for="name">Name:</label>
+        <input type="text" id="addName" placeholder="Enter item name" required>
+        
+        <label for="team">Team:</label>
+        <input type="text" id="addTeam" placeholder="Enter team name" required>
+        
+        <label for="sport">Sport:</label>
+        <input type="text" id="addSport" placeholder="Enter sport" required>
+        
+        <label for="status">Status:</label>
+        <input type="text" id="addStatus" placeholder="Enter status" required>
+        
+        <label for="size">Size:</label>
+        <input type="text" id="addSize" placeholder="Enter size" required>
+        
+        <label for="price">Price:</label>
+        <input type="number" id="addPrice" placeholder="Enter price" required>
+        
+        <label for="category">Category:</label>
+        <input type="text" id="addCategory" placeholder="Enter category" required>
+        
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="addQuantity" placeholder="Enter quantity" required>
+        
+        <button onclick="handleAdd()" class="btn btn-success">Add Item</button>
+        <button onclick="handleOnLoad()" class="btn btn-secondary">Cancel</button>
+    </form>`;
+    document.getElementById("inventoryTable").innerHTML = html;
+}
+
+async function handleAdd() {
+    let newItem = {
+        name: document.getElementById("item-name").value.trim(),
+        team: document.getElementById("item-team").value.trim(),
+        sport: document.getElementById("item-sport").value.trim(),
+        status: document.getElementById("item-status").value.trim(),
+        size: document.getElementById("item-size").value.trim(),
+        price: parseFloat(document.getElementById("item-price").value),
+        category: document.getElementById("item-category").value.trim(),
+        nameOfPlayer: document.getElementById("item-player").value.trim(),
+        quantity: parseInt(document.getElementById("item-quantity").value, 10)
+    };
+
+    console.log(newItem); 
+
+    await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(newItem),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        }
+    });
+
+    handleOnLoad();
+}
+
+
+
+
 function searchTable() {
     const input = document.getElementById("searchBox").value.toUpperCase(); 
     const table = document.getElementById("inventoryTable"); 

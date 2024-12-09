@@ -463,8 +463,11 @@ namespace api.Databases
 
         public async Task InsertItem(Item item)
         {
-            string sql = @$"INSERT INTO product (productID, productName, price, status, team, category, sport, quantity, size, nameOfPlayer)
-                            VALUES (@productID, @productName, @price, @status, @team, @category, @sport, @quantity, @size, @nameOfPlayer);";
+            // string sql = @$"INSERT INTO product (productID, productName, price, status, team, category, sport, quantity, size, nameOfPlayer)
+            //                 VALUES (@productID, @productName, @price, @status, @team, @category, @sport, @quantity, @size, @nameOfPlayer);";
+            string sql = @$"INSERT INTO product (productName, price, status, team, category, sport, quantity, size, nameOfPlayer)
+            VALUES (@productName, @price, @status, @team, @category, @sport, @quantity, @size, @nameOfPlayer);";
+
             List<MySqlParameter> parms = new();
             parms.Add(new MySqlParameter("@productID", MySqlDbType.Int32) { Value = item.ID });
             parms.Add(new MySqlParameter("@productName", MySqlDbType.String) { Value = item.Name });

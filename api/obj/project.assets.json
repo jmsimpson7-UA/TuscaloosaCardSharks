@@ -615,26 +615,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\logan\\.nuget\\packages\\": {}
+    "/Users/ccsimpson/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\logan\\MIS\\321\\GProject\\TCS\\TuscaloosaCardSharks\\api\\api.csproj",
+      "projectUniqueName": "/Users/ccsimpson/Desktop/mis321/TuscaloosaCardSharks/api/api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Users\\logan\\MIS\\321\\GProject\\TCS\\TuscaloosaCardSharks\\api\\api.csproj",
-      "packagesPath": "C:\\Users\\logan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\logan\\MIS\\321\\GProject\\TCS\\TuscaloosaCardSharks\\api\\obj\\",
+      "projectPath": "/Users/ccsimpson/Desktop/mis321/TuscaloosaCardSharks/api/api.csproj",
+      "packagesPath": "/Users/ccsimpson/.nuget/packages/",
+      "outputPath": "/Users/ccsimpson/Desktop/mis321/TuscaloosaCardSharks/api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\logan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/ccsimpson/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -647,11 +645,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -686,7 +679,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -174,6 +174,16 @@ namespace api.Databases
             List<MySqlParameter> parms = new();
             return await SelectProductPurchase(sql, parms);
         }
+        
+        public async Task<List<Purchase>> GetPurchaseInfo(int custID)
+        {
+            DateOnly date = DateOnly.FromDateTime(DateTime.Now);
+            string sql = @"SELECT * FROM purchase where purchaseID = @ID AND purchaseDate = @date;";
+            List<MySqlParameter> parms = new();
+            parms.Add(new MySqlParameter("@id", MySqlDbType.Int32) { Value = custID });
+            parms.Add(new MySqlParameter("@date", MySqlDbType.Date) { Value = date });
+            return await SelectPurchase(sql, parms);
+        }
 
         private async Task ProductPurchaseNoReturnSql(string sql, List<MySqlParameter> parms)
         {
@@ -192,7 +202,7 @@ namespace api.Databases
 
         public async Task InsertProductPurchase(ProductPurchase productPurchase)
         {
-            string sql = @$"INSERT INTO productPurchase (purchaseID, productID)
+            string sql = @$"INSERT INTO productPurchased (purchaseID, productID)
                             VALUES (@purchaseID, @productID);";
             List<MySqlParameter> parms = new();
             parms.Add(new MySqlParameter("@purchaseID", MySqlDbType.Int32) { Value = productPurchase.purchaseID });

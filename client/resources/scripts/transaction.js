@@ -121,7 +121,8 @@ async function handleTransaction(event) {
     }
 
     UpdateCustomerPoints(customerId, price);
-    UpdateInventory(itemInput)
+    UpdateInventory(itemInput);
+    HandleProductPurchased(itemInput, customerId);
     
 }
 
@@ -180,9 +181,7 @@ async function UpdateInventory(itemID){
 
         let product = await response.json();
         let productID = product[0].productID;
-        console.log(product[0].quantity)
         let newQuantity = product[0].quantity - 1;
-        console.log("new quant " + newQuantity);
 
         let updatedProduct = {
             id: productID,
@@ -214,4 +213,23 @@ async function UpdateInventory(itemID){
             console.error("Error updating quantity:", error);
             alert("Error updating quantity: " + error.message);
         }
+}
+
+async function HandleProductPurchased(productID, customerId) {
+    let response = await fetch(`http://localhost:5195/Transaction/${customerId}`);
+    let purchase = await response.json();
+    let purchaseID = purchase[0].purchaseID;
+
+    let productPurchased = {
+        purchaseID: purchaseID,
+        productID: productID
+    }
+
+    await fetch(`http://localhost:5195/Transaction/PostProductPurchase`, {
+        method: "POST",
+        body: JSON.stringify(productPurchased),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        }
+    });
 }

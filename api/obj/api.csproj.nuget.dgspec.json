@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "/Users/ccsimpson/Desktop/mis321/TuscaloosaCardSharks/api/api.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ccsimpson/.nuget/NuGet/NuGet.Config"
+=======
+    "C:\\MIS 321\\TuscaloosaCardSharks\\api\\api.csproj": {}
+  },
+  "projects": {
+    "C:\\MIS 321\\TuscaloosaCardSharks\\api\\api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\MIS 321\\TuscaloosaCardSharks\\api\\api.csproj",
+        "projectName": "api",
+        "projectPath": "C:\\MIS 321\\TuscaloosaCardSharks\\api\\api.csproj",
+        "packagesPath": "C:\\Users\\matth\\.nuget\\packages\\",
+        "outputPath": "C:\\MIS 321\\TuscaloosaCardSharks\\api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matth\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> 7cebb48776adb3ec67c1b280e75ed296486cb9eb
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -66,7 +83,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+>>>>>>> 7cebb48776adb3ec67c1b280e75ed296486cb9eb
         }
       }
     }

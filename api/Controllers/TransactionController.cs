@@ -16,6 +16,14 @@ public class TransactionController : ControllerBase
 
         return await myDatabase.GetAllPurchases();
     }
+    
+    [HttpGet ("{id}")]
+    public async Task<List<Purchase>> GetPurchaseInfo(int id)
+    {
+        Database myDatabase = new();
+
+        return await myDatabase.GetPurchaseInfo(id);
+    }
 
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] Purchase value)
